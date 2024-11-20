@@ -1,0 +1,26 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bt3rm0a5xyayl"]
+
+[ext_resource type="Texture2D" uid="uid://cm7re8kqg6gge" path="res://tiles/ocean.png" id="1_fhgou"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ww681"]
+texture = ExtResource("1_fhgou")
+0:0/animation_speed = 6.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/animation_frame_8/duration = 1.0
+0:0/animation_frame_9/duration = 1.0
+0:0/animation_frame_10/duration = 1.0
+0:0/animation_frame_11/duration = 1.0
+0:0/animation_frame_12/duration = 1.0
+0:0/animation_frame_13/duration = 1.0
+0:0/animation_frame_14/duration = 1.0
+0:0/0 = 0
+
+[resource]
+sources/1 = SubResource("TileSetAtlasSource_ww681")

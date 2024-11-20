@@ -1,0 +1,64 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bu2gjd854ctix"]
+
+[ext_resource type="Texture2D" uid="uid://c2wg1wxaairnk" path="res://tiles/tiles.png" id="1_ielgr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ivtiu"]
+texture = ExtResource("1_ielgr")
+0:0/0 = 0
+1:0/next_alternative_id = 2
+1:0/0 = 0
+1:0/1 = 1
+1:0/1/flip_h = true
+2:0/next_alternative_id = 5
+2:0/0 = 0
+2:0/1 = 1
+2:0/1/flip_h = true
+2:0/2 = 2
+2:0/2/flip_v = true
+2:0/3 = 3
+2:0/3/flip_h = true
+2:0/3/flip_v = true
+3:0/next_alternative_id = 4
+3:0/0 = 0
+3:0/1 = 1
+3:0/1/flip_h = true
+3:0/2 = 2
+3:0/2/flip_v = true
+3:0/3 = 3
+3:0/3/flip_h = true
+3:0/3/flip_v = true
+4:0/next_alternative_id = 4
+4:0/0 = 0
+4:0/1 = 1
+4:0/1/flip_h = true
+4:0/2 = 2
+4:0/2/flip_v = true
+4:0/3 = 3
+4:0/3/flip_h = true
+4:0/3/flip_v = true
+0:1/0 = 0
+1:1/next_alternative_id = 4
+1:1/0 = 0
+1:1/1 = 1
+1:1/1/flip_h = true
+1:1/2 = 2
+1:1/2/flip_v = true
+1:1/3 = 3
+1:1/3/flip_h = true
+1:1/3/flip_v = true
+2:1/next_alternative_id = 4
+2:1/0 = 0
+2:1/1 = 1
+2:1/1/flip_h = true
+2:1/2 = 2
+2:1/2/flip_v = true
+2:1/3 = 3
+2:1/3/flip_h = true
+2:1/3/flip_v = true
+3:1/next_alternative_id = 2
+3:1/0 = 0
+3:1/1 = 1
+3:1/1/flip_h = true
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_ivtiu")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxv67g8bhi1nr"]
+
+[ext_resource type="PackedScene" uid="uid://bqba5ctam7o1b" path="res://scenes/Map.tscn" id="1_p4d56"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="2_wtmfj"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Map" parent="." instance=ExtResource("1_p4d56")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(144, 81)
+zoom = Vector2(3, 3)
+script = ExtResource("2_wtmfj")
+pan_speed = 80.0
