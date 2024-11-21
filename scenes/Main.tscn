@@ -11,4 +11,4 @@
 position = Vector2(144, 81)
 zoom = Vector2(3, 3)
 script = ExtResource("2_wtmfj")
-pan_speed = 80.0
+pan_speed = 200.0

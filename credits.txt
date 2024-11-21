@@ -2,3 +2,5 @@ Currently this file just contains links to art that I downloaded,
 TODO: improve formatting of this file and also add an in-game credits screen
 
 https://opengameart.org/content/worldmapoverworld-tileset
+
+https://opengameart.org/content/ww2-soldier
