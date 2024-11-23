@@ -1,16 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxv67g8bhi1nr"]
+[gd_scene load_steps=11 format=3 uid="uid://bxv67g8bhi1nr"]
 
 [ext_resource type="PackedScene" uid="uid://bqba5ctam7o1b" path="res://scenes/Map.tscn" id="1_p4d56"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_vm824"]
 [ext_resource type="PackedScene" uid="uid://pmixta5uuhrr" path="res://scenes/Outline.tscn" id="2_qhejk"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_wtmfj"]
 [ext_resource type="PackedScene" uid="uid://o3ai05q6n00j" path="res://scenes/AlliedSoldier.tscn" id="3_l1mcd"]
+[ext_resource type="PackedScene" uid="uid://bawr4pjkldab3" path="res://scenes/LandmineOutline.tscn" id="3_nf2ko"]
+[ext_resource type="PackedScene" uid="uid://b5k52x06b8fwj" path="res://scenes/HealOutline.tscn" id="4_355jv"]
 [ext_resource type="Texture2D" uid="uid://sv8vm6pk0834" path="res://art/green_outline.png" id="4_wmuwv"]
 [ext_resource type="PackedScene" uid="uid://cndr272gpptp8" path="res://scenes/AxisSoldier.tscn" id="7_jrkdo"]
+[ext_resource type="AudioStream" uid="uid://cp4lr38tswe3q" path="res://sfx/heal.wav" id="10_11msm"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vm824")
 white_outline = ExtResource("2_qhejk")
+landmine_outline = ExtResource("3_nf2ko")
+heal_outline = ExtResource("4_355jv")
 
 [node name="Map" parent="." instance=ExtResource("1_p4d56")]
 
@@ -43,3 +48,8 @@ position = Vector2(-24, 119)
 
 [node name="AxisSoldier2" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
 position = Vector2(-22, 31)
+
+[node name="Sfx" type="Node" parent="."]
+
+[node name="Heal" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("10_11msm")

@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+@export var effect_particles: PackedScene
+
 @export var walking_speed: float = 0.0
 
 var startx: int = 0
@@ -13,6 +15,15 @@ var action: String = ""
 
 @export var hp: int = 8
 @export var max_hp: int = 8
+
+func heal():
+	if hp < max_hp:
+		var particles = effect_particles.instantiate()
+		particles.modulate = Color.LIME_GREEN
+		add_child(particles)
+		$/root/Main/Sfx/Heal.play()
+	hp += 1
+	hp = min(max_hp, hp)
 
 func get_tile_pos() -> Vector2i:
 	var px = int(floor(position.x / tilesz))
@@ -178,6 +189,17 @@ func get_possible_moves() -> Array[Vector2i]:
 			if (not can_move_xy(p.x, p.y, x, y)) and (not can_move_yx(p.x, p.y, x, y)):
 				continue
 			possible.append(pos)
+	
+	return possible
+
+func get_possible_heal() -> Array[Vector2i]:
+	var possible: Array[Vector2i] = []
+	var p = get_tile_pos()
+	for x in range(-2, 2 + 1):
+		if x == 0:
+			continue
+		possible.push_back(p + Vector2i(x, 0))
+		possible.push_back(p + Vector2i(0, x))
 	
 	return possible
 

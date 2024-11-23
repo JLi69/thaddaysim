@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bawr4pjkldab3"]
+
+[ext_resource type="Texture2D" uid="uid://dlod7t6vit8ie" path="res://art/white_outline.png" id="1_mrcn8"]
+[ext_resource type="Script" path="res://scripts/landmine_outline.gd" id="2_8vfy1"]
+
+[node name="LandmineOutline" type="Sprite2D"]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(1.063, 1.063)
+texture = ExtResource("1_mrcn8")
+script = ExtResource("2_8vfy1")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

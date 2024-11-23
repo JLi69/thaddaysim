@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://o3ai05q6n00j"]
+[gd_scene load_steps=24 format=3 uid="uid://o3ai05q6n00j"]
 
 [ext_resource type="Texture2D" uid="uid://cm6kxt2fqq8s5" path="res://art/soldier.png" id="1_nvo2k"]
 [ext_resource type="Script" path="res://scripts/allied_soldier.gd" id="2_at5eq"]
+[ext_resource type="PackedScene" uid="uid://yxiohtrg0qwm" path="res://scenes/EffectParticles.tscn" id="3_2lpbx"]
 [ext_resource type="Texture2D" uid="uid://dtl8xc6daks87" path="res://art/shadow.png" id="3_ojkwm"]
 [ext_resource type="FontFile" uid="uid://b83lr4reqbm0y" path="res://fonts/8BitOperator/8bitOperatorPlus8-Regular.ttf" id="4_jsfsn"]
 [ext_resource type="Script" path="res://scripts/allied_soldier_buttons.gd" id="4_wx0ji"]
@@ -131,6 +132,7 @@ sprite_frames = SubResource("SpriteFrames_8cjft")
 autoplay = "default"
 flip_h = true
 script = ExtResource("2_at5eq")
+effect_particles = ExtResource("3_2lpbx")
 walking_speed = 32.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -198,3 +200,4 @@ text = "hp/max hp"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Buttons/Move" to="Buttons" method="_on_move_pressed"]
+[connection signal="pressed" from="Buttons/Heal" to="Buttons" method="_on_heal_pressed"]

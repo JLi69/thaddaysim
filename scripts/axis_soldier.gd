@@ -64,6 +64,31 @@ func get_possible_moves() -> Array[Vector2i]:
 	
 	return possible
 
+func get_possible_landmines() -> Array[Vector2i]:
+	var possible: Array[Vector2i] = []
+	var p = get_tile_pos()
+	var tilemap: TileMapLayer = $/root/Main/Map/Tiles
+	var obstacles: TileMapLayer = $/root/Main/Map/Obstacles
+	
+	for x in range(-1, 1 + 1):
+		for y in range(-1, 1 + 1):
+			if abs(x) + abs(y) > 1 or (x == 0 and y == 0):
+				continue
+			var pos = p + Vector2i(x, y)
+			if tilemap.get_cell_tile_data(pos) == null:
+				continue
+			if tilemap.get_cell_tile_data(pos).get_custom_data("unwalkable"):
+				continue
+			if obstacles.get_cell_tile_data(pos) != null and obstacles.get_cell_tile_data(pos).get_custom_data("wall"):
+				continue
+			if obstacles.get_cell_tile_data(pos) != null and obstacles.get_cell_tile_data(pos).get_custom_data("landmine"):
+				continue
+			if not can_move(p.x, p.y, x, y):
+				continue
+			possible.append(pos)
+	
+	return possible
+
 func _ready() -> void:
 	var fsize = sprite_frames.get_frame_texture("default", 0).get_size()
 	size = fsize
@@ -82,7 +107,6 @@ func _process(delta: float) -> void:
 	
 	var tilepos = get_tile_pos()
 	
-	var diff = Vector2i(targetx - startx, targety - starty)
 	var target = Vector2(targetx, targety) * tilesz + Vector2(tilesz / 2.0, tilesz / 2.0 - size.y / 2.0 + size.y / 8.0)
 	var vel = Vector2.ZERO
 	

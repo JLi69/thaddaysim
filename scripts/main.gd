@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var white_outline: PackedScene
+@export var landmine_outline: PackedScene
+@export var heal_outline: PackedScene
 
 @onready var tilesz: int = $Map/Tiles.tile_set.tile_size.x;
 var soldiers = []
@@ -40,8 +42,11 @@ func generate_outlines():
 	
 	if soldier.action == "":
 		soldier.get_node("Buttons").show()
+		
+	if $Outlines.get_child_count() > 0:
+		return
 	
-	if $Outlines.get_child_count() == 0 and soldier.action == "move":
+	if soldier.action == "move":
 		var possible = soldier.get_possible_moves()
 		for p in possible:
 			var outline = white_outline.instantiate()
@@ -49,9 +54,33 @@ func generate_outlines():
 			outline.tiley = p.y
 			outline.position = convert_tile_to_world(p)
 			$Outlines.add_child(outline)
+	elif soldier.action == "landmine":
+		var possible = soldier.get_possible_landmines()
+		for p in possible:
+			var outline = landmine_outline.instantiate()
+			outline.tilex = p.x
+			outline.tiley = p.y
+			outline.position = convert_tile_to_world(p)
+			$Outlines.add_child(outline)
+	elif soldier.action == "heal":
+		var possible = soldier.get_possible_heal()
+		for p in possible:
+			var outline = heal_outline.instantiate()
+			outline.tilex = p.x
+			outline.tiley = p.y
+			outline.position = convert_tile_to_world(p)
+			$Outlines.add_child(outline)
 
 func _process(_delta: float) -> void:
 	generate_outlines()
+	
+	if Input.is_action_pressed("cancel") and $Outlines.get_child_count() > 0 and len(soldiers) > 0:
+		var soldier = get_node(soldiers[0])
+		soldier.action = ""
+		soldier.get_node("Buttons").show()
+		for child in $Outlines.get_children():
+			$Outlines.remove_child(child)
+			child.queue_free()
 	
 	if len(soldiers) == 0:
 		current_turn += 1
