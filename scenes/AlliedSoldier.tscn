@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://o3ai05q6n00j"]
+[gd_scene load_steps=23 format=3 uid="uid://o3ai05q6n00j"]
 
 [ext_resource type="Texture2D" uid="uid://cm6kxt2fqq8s5" path="res://art/soldier.png" id="1_nvo2k"]
 [ext_resource type="Script" path="res://scripts/allied_soldier.gd" id="2_at5eq"]
 [ext_resource type="Texture2D" uid="uid://dtl8xc6daks87" path="res://art/shadow.png" id="3_ojkwm"]
 [ext_resource type="FontFile" uid="uid://b83lr4reqbm0y" path="res://fonts/8BitOperator/8bitOperatorPlus8-Regular.ttf" id="4_jsfsn"]
 [ext_resource type="Script" path="res://scripts/allied_soldier_buttons.gd" id="4_wx0ji"]
+[ext_resource type="Texture2D" uid="uid://gtmsubhl8mbc" path="res://art/heart.png" id="6_huid0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4u63t"]
 atlas = ExtResource("1_nvo2k")
@@ -152,9 +153,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Shoot" type="Button" parent="Buttons"]
 offset_left = -25.0
-offset_top = -27.5
+offset_top = -37.5
 offset_right = 25.0
-offset_bottom = -8.5
+offset_bottom = -18.5
 theme_override_fonts/font = ExtResource("4_jsfsn")
 theme_override_font_sizes/font_size = 14
 text = "Shoot"
@@ -178,6 +179,22 @@ offset_bottom = 45.25
 theme_override_fonts/font = ExtResource("4_jsfsn")
 theme_override_font_sizes/font_size = 14
 text = "Heal"
+metadata/_edit_use_anchors_ = true
+
+[node name="Heart" type="Sprite2D" parent="."]
+position = Vector2(-7.5, -12.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_huid0")
+
+[node name="HP" type="Label" parent="Heart"]
+offset_left = 12.5
+offset_top = -7.5
+offset_right = 108.5
+offset_bottom = 15.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_jsfsn")
+theme_override_font_sizes/font_size = 18
+text = "hp/max hp"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Buttons/Move" to="Buttons" method="_on_move_pressed"]

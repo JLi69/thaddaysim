@@ -11,6 +11,9 @@ var size: Vector2i = Vector2i.ZERO
 
 var action: String = ""
 
+@export var hp: int = 8
+@export var max_hp: int = 8
+
 func get_tile_pos() -> Vector2i:
 	var px = int(floor(position.x / tilesz))
 	var py = int(floor((position.y + size.y / 2.0 - size.y / 8.0) / tilesz))
@@ -190,6 +193,9 @@ func _ready() -> void:
 	$Buttons.hide()
 	
 func _process(delta: float) -> void:
+	# set health text
+	$Heart/HP.text = str(hp) + "/" + str(max_hp)
+	
 	var tilepos = get_tile_pos()
 	
 	var diff = Vector2i(targetx - startx, targety - starty)
