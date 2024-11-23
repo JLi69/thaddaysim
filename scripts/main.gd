@@ -20,7 +20,7 @@ func add_soldiers_to_queue(node: Node2D, path: String):
 func _ready() -> void:
 	# Allied soldiers go first
 	add_soldiers_to_queue($AlliedSoldiers, "AlliedSoldiers/")
-		
+
 func generate_outlines():
 	if len(soldiers) == 0:
 		return
@@ -28,9 +28,11 @@ func generate_outlines():
 	var node_name = soldiers[0]
 	current_soldier = node_name
 	var pos = get_node(node_name).get_tile_pos()
-	$GreenOutline.position = convert_tile_to_world(pos)
+	var world_pos = convert_tile_to_world(pos)
+	$GreenOutline.position = world_pos
 	
 	if $Outlines.get_child_count() == 0:
+		$Camera2D.start_zooming(world_pos.x, world_pos.y)
 		var possible = get_node(node_name).get_possible_moves()
 		for p in possible:
 			var outline = white_outline.instantiate()
