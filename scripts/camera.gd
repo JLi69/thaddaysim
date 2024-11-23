@@ -24,6 +24,28 @@ func zoom_in(delta: float) -> void:
 	
 	if (position - zoom_target).length() < 16.0 and abs(zoom.x - default_zoom) < 0.1:
 		zooming_in = false
+	
+	# clamp camera position
+	var map_rect: Rect2i = $/root/Main/Map/Tiles.get_used_rect()
+	var tile_sz = $/root/Main/Map/Tiles.tile_set.tile_size.x
+	var map_rect_pos: Vector2i = map_rect.position * tile_sz
+	var map_rect_sz: Vector2i = map_rect.size * tile_sz
+	var viewport = (get_viewport_rect().size / zoom) / 2.0
+	var px = position.x
+	var py = position.y
+	position.x = clamp(
+		position.x, 
+		map_rect_pos.x + viewport.x, 
+		map_rect_pos.x + map_rect_sz.x + margin_x - viewport.x
+	)
+	position.y = clamp(
+		position.y, 
+		map_rect_pos.y + viewport.y,
+		map_rect_pos.y + map_rect_sz.y - viewport.y
+	)
+	
+	if position.x != px or position.y != py:
+		zooming_in = false
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("camera_stop_zoom"):

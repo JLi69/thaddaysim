@@ -5,6 +5,9 @@ extends Node2D
 @onready var tilesz: int = $Map/Tiles.tile_set.tile_size.x;
 var soldiers = []
 var current_soldier: String = ""
+var node_paths = [ "AlliedSoldiers/", "AxisSoldiers/" ]
+# 0 = allies, 1 = axis
+var current_turn: int = 0
 
 func convert_tile_to_world(p: Vector2i) -> Vector2:
 	return Vector2(p.x, p.y) * tilesz + Vector2(tilesz / 2, tilesz / 2)
@@ -19,7 +22,7 @@ func add_soldiers_to_queue(node: Node2D, path: String):
 
 func _ready() -> void:
 	# Allied soldiers go first
-	add_soldiers_to_queue($AlliedSoldiers, "AlliedSoldiers/")
+	add_soldiers_to_queue(get_node(node_paths[current_turn]), node_paths[current_turn])
 
 func generate_outlines():
 	if len(soldiers) == 0:
@@ -45,7 +48,9 @@ func _process(_delta: float) -> void:
 	generate_outlines()
 	
 	if len(soldiers) == 0:
-		add_soldiers_to_queue($AlliedSoldiers, "AlliedSoldiers/")
+		current_turn += 1
+		current_turn %= len(node_paths)
+		add_soldiers_to_queue(get_node(node_paths[current_turn]), node_paths[current_turn])
 	
 	if len(soldiers) == 0:
 		$GreenOutline.hide()

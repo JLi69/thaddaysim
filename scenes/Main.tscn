@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxv67g8bhi1nr"]
+[gd_scene load_steps=8 format=3 uid="uid://bxv67g8bhi1nr"]
 
 [ext_resource type="PackedScene" uid="uid://bqba5ctam7o1b" path="res://scenes/Map.tscn" id="1_p4d56"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_vm824"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_wtmfj"]
 [ext_resource type="PackedScene" uid="uid://o3ai05q6n00j" path="res://scenes/AlliedSoldier.tscn" id="3_l1mcd"]
 [ext_resource type="Texture2D" uid="uid://sv8vm6pk0834" path="res://art/green_outline.png" id="4_wmuwv"]
+[ext_resource type="PackedScene" uid="uid://cndr272gpptp8" path="res://scenes/AxisSoldier.tscn" id="7_jrkdo"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vm824")
@@ -34,3 +35,11 @@ position = Vector2(161, 119)
 
 [node name="AlliedSoldier3" parent="AlliedSoldiers" instance=ExtResource("3_l1mcd")]
 position = Vector2(160, 32)
+
+[node name="AxisSoldiers" type="Node2D" parent="."]
+
+[node name="AxisSoldier" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
+position = Vector2(-24, 119)
+
+[node name="AxisSoldier2" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
+position = Vector2(-22, 31)
