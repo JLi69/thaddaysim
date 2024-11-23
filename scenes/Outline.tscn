@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://pmixta5uuhrr"]
+
+[ext_resource type="Texture2D" uid="uid://dlod7t6vit8ie" path="res://art/white_outline.png" id="1_kclyw"]
+[ext_resource type="Script" path="res://scripts/outline.gd" id="2_x6qrk"]
+
+[node name="WhiteOutline" type="Sprite2D"]
+scale = Vector2(1.063, 1.063)
+texture = ExtResource("1_kclyw")
+script = ExtResource("2_x6qrk")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

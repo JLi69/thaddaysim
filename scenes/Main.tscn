@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxv67g8bhi1nr"]
+[gd_scene load_steps=7 format=3 uid="uid://bxv67g8bhi1nr"]
 
 [ext_resource type="PackedScene" uid="uid://bqba5ctam7o1b" path="res://scenes/Map.tscn" id="1_p4d56"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_vm824"]
+[ext_resource type="PackedScene" uid="uid://pmixta5uuhrr" path="res://scenes/Outline.tscn" id="2_qhejk"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_wtmfj"]
+[ext_resource type="PackedScene" uid="uid://o3ai05q6n00j" path="res://scenes/AlliedSoldier.tscn" id="3_l1mcd"]
+[ext_resource type="Texture2D" uid="uid://sv8vm6pk0834" path="res://art/green_outline.png" id="4_wmuwv"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_vm824")
+white_outline = ExtResource("2_qhejk")
 
 [node name="Map" parent="." instance=ExtResource("1_p4d56")]
 
@@ -12,3 +18,19 @@ position = Vector2(144, 81)
 zoom = Vector2(3, 3)
 script = ExtResource("2_wtmfj")
 pan_speed = 200.0
+
+[node name="Outlines" type="Node2D" parent="."]
+
+[node name="GreenOutline" type="Sprite2D" parent="."]
+texture = ExtResource("4_wmuwv")
+
+[node name="AlliedSoldiers" type="Node2D" parent="."]
+
+[node name="AlliedSoldier" parent="AlliedSoldiers" instance=ExtResource("3_l1mcd")]
+position = Vector2(148, 70)
+
+[node name="AlliedSoldier2" parent="AlliedSoldiers" instance=ExtResource("3_l1mcd")]
+position = Vector2(161, 119)
+
+[node name="AlliedSoldier3" parent="AlliedSoldiers" instance=ExtResource("3_l1mcd")]
+position = Vector2(160, 32)
