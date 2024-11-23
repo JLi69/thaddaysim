@@ -18,11 +18,17 @@ func _on_button_pressed() -> void:
 	
 	var soldier_node_path = $/root/Main.current_soldier
 	var soldier = $/root/Main.get_node(soldier_node_path)
+	soldier.get_node("Buttons").hide()
+	soldier.action = ""
 	soldier.targetx = tilex
 	soldier.targety = tiley
 	soldier.startx = soldier.get_tile_pos().x
 	soldier.starty = soldier.get_tile_pos().y
 	soldier.animation = "walking"
+	
+	if len($/root/Main.soldiers) > 0:
+		var world_pos = $/root/Main.get_node($/root/Main.soldiers[0]).get_world_pos()
+		$/root/Main/Camera2D.start_zooming(world_pos.x, world_pos.y)
 	
 	var outlines = $/root/Main/Outlines
 	for n in outlines.get_children():

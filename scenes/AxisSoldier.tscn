@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://cndr272gpptp8"]
+[gd_scene load_steps=22 format=3 uid="uid://cndr272gpptp8"]
 
 [ext_resource type="Texture2D" uid="uid://b4cnnpdivfsmu" path="res://art/axis_soldier.png" id="1_05sra"]
 [ext_resource type="Script" path="res://scripts/axis_soldier.gd" id="2_057vq"]
 [ext_resource type="Texture2D" uid="uid://dtl8xc6daks87" path="res://art/shadow.png" id="2_geepr"]
+[ext_resource type="Script" path="res://scenes/axis_soldier_buttons.gd" id="4_ledci"]
+[ext_resource type="FontFile" uid="uid://b83lr4reqbm0y" path="res://fonts/8BitOperator/8bitOperatorPlus8-Regular.ttf" id="5_if13f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w4hl3"]
 atlas = ExtResource("1_05sra")
@@ -134,3 +136,44 @@ z_index = -1
 position = Vector2(-5.68434e-14, 16.25)
 scale = Vector2(0.46875, 0.175781)
 texture = ExtResource("2_geepr")
+
+[node name="Buttons" type="Node2D" parent="."]
+script = ExtResource("4_ledci")
+
+[node name="Move" type="Button" parent="Buttons"]
+offset_left = -57.5
+offset_top = -1.25
+offset_right = -12.5
+offset_bottom = 17.75
+theme_override_fonts/font = ExtResource("5_if13f")
+theme_override_font_sizes/font_size = 14
+text = "Move"
+
+[node name="Shoot" type="Button" parent="Buttons"]
+offset_left = -25.0
+offset_top = -28.75
+offset_right = 25.0
+offset_bottom = -9.75
+theme_override_fonts/font = ExtResource("5_if13f")
+theme_override_font_sizes/font_size = 14
+text = "Shoot"
+
+[node name="Build" type="Button" parent="Buttons"]
+offset_left = 17.5
+offset_top = -1.25
+offset_right = 63.5
+offset_bottom = 17.75
+theme_override_fonts/font = ExtResource("5_if13f")
+theme_override_font_sizes/font_size = 14
+text = "Build"
+
+[node name="Heal" type="Button" parent="Buttons"]
+offset_left = -37.5
+offset_top = 27.5
+offset_right = 39.5
+offset_bottom = 46.5
+theme_override_fonts/font = ExtResource("5_if13f")
+theme_override_font_sizes/font_size = 14
+text = "Landmine"
+
+[connection signal="pressed" from="Buttons/Move" to="Buttons" method="_on_move_pressed"]

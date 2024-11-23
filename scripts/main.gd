@@ -23,20 +23,26 @@ func add_soldiers_to_queue(node: Node2D, path: String):
 func _ready() -> void:
 	# Allied soldiers go first
 	add_soldiers_to_queue(get_node(node_paths[current_turn]), node_paths[current_turn])
+	# center camera upon soldier
+	if len(soldiers) != 0:
+		$Camera2D.position = get_node(soldiers[0]).position
+		$Camera2D.position.y += get_node(soldiers[0]).size.y / 8.0 * 3.0
 
 func generate_outlines():
 	if len(soldiers) == 0:
 		return
 	
-	var node_name = soldiers[0]
-	current_soldier = node_name
-	var pos = get_node(node_name).get_tile_pos()
+	current_soldier = soldiers[0]
+	var soldier = get_node(current_soldier)
+	var pos = soldier.get_tile_pos()
 	var world_pos = convert_tile_to_world(pos)
 	$GreenOutline.position = world_pos
 	
-	if $Outlines.get_child_count() == 0:
-		$Camera2D.start_zooming(world_pos.x, world_pos.y)
-		var possible = get_node(node_name).get_possible_moves()
+	if soldier.action == "":
+		soldier.get_node("Buttons").show()
+	
+	if $Outlines.get_child_count() == 0 and soldier.action == "move":
+		var possible = soldier.get_possible_moves()
 		for p in possible:
 			var outline = white_outline.instantiate()
 			outline.tilex = p.x
@@ -51,6 +57,8 @@ func _process(_delta: float) -> void:
 		current_turn += 1
 		current_turn %= len(node_paths)
 		add_soldiers_to_queue(get_node(node_paths[current_turn]), node_paths[current_turn])
+		var world_pos = get_node(soldiers[0]).get_world_pos()
+		$Camera2D.start_zooming(world_pos.x, world_pos.y)
 	
 	if len(soldiers) == 0:
 		$GreenOutline.hide()

@@ -9,6 +9,8 @@ var targety: int = 0
 @onready var tilesz = $/root/Main/Map/Tiles.tile_set.tile_size.x
 var size: Vector2i = Vector2i.ZERO
 
+var action: String = ""
+
 func get_tile_pos() -> Vector2i:
 	var px = int(floor(position.x / tilesz))
 	var py = int(floor((position.y + size.y / 2.0 - size.y / 8.0) / tilesz))
@@ -185,6 +187,7 @@ func _ready() -> void:
 	targety = get_tile_pos().y
 	startx = get_tile_pos().x
 	starty = get_tile_pos().y
+	$Buttons.hide()
 	
 func _process(delta: float) -> void:
 	var tilepos = get_tile_pos()

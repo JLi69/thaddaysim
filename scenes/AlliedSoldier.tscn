@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://o3ai05q6n00j"]
+[gd_scene load_steps=22 format=3 uid="uid://o3ai05q6n00j"]
 
 [ext_resource type="Texture2D" uid="uid://cm6kxt2fqq8s5" path="res://art/soldier.png" id="1_nvo2k"]
 [ext_resource type="Script" path="res://scripts/allied_soldier.gd" id="2_at5eq"]
 [ext_resource type="Texture2D" uid="uid://dtl8xc6daks87" path="res://art/shadow.png" id="3_ojkwm"]
+[ext_resource type="FontFile" uid="uid://b83lr4reqbm0y" path="res://fonts/8BitOperator/8bitOperatorPlus8-Regular.ttf" id="4_jsfsn"]
+[ext_resource type="Script" path="res://scripts/allied_soldier_buttons.gd" id="4_wx0ji"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4u63t"]
 atlas = ExtResource("1_nvo2k")
@@ -135,3 +137,47 @@ z_index = -1
 position = Vector2(-5.68434e-14, 16.25)
 scale = Vector2(0.46875, 0.175781)
 texture = ExtResource("3_ojkwm")
+
+[node name="Buttons" type="Node2D" parent="."]
+script = ExtResource("4_wx0ji")
+
+[node name="Move" type="Button" parent="Buttons"]
+offset_left = -61.25
+offset_right = -16.25
+offset_bottom = 19.0
+theme_override_fonts/font = ExtResource("4_jsfsn")
+theme_override_font_sizes/font_size = 14
+text = "Move"
+metadata/_edit_use_anchors_ = true
+
+[node name="Shoot" type="Button" parent="Buttons"]
+offset_left = -25.0
+offset_top = -27.5
+offset_right = 25.0
+offset_bottom = -8.5
+theme_override_fonts/font = ExtResource("4_jsfsn")
+theme_override_font_sizes/font_size = 14
+text = "Shoot"
+metadata/_edit_use_anchors_ = true
+
+[node name="Grenade" type="Button" parent="Buttons"]
+offset_left = 15.0
+offset_top = 0.5
+offset_right = 75.0
+offset_bottom = 19.5
+theme_override_fonts/font = ExtResource("4_jsfsn")
+theme_override_font_sizes/font_size = 12
+text = "Grenade"
+metadata/_edit_use_anchors_ = true
+
+[node name="Heal" type="Button" parent="Buttons"]
+offset_left = -20.0
+offset_top = 26.25
+offset_right = 20.0
+offset_bottom = 45.25
+theme_override_fonts/font = ExtResource("4_jsfsn")
+theme_override_font_sizes/font_size = 14
+text = "Heal"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Buttons/Move" to="Buttons" method="_on_move_pressed"]
