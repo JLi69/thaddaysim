@@ -1,6 +1,12 @@
-Currently this file just contains links to art that I downloaded,
-TODO: improve formatting of this file and also add an in-game credits screen
+THIRD PARTY ARTWORK USED:
 
-https://opengameart.org/content/worldmapoverworld-tileset
+Title: Worldmap/Overworld tileset
+Author: Beast
+URL: https://opengameart.org/content/worldmapoverworld-tileset
+License: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
 
-https://opengameart.org/content/ww2-soldier
+Title: WW2 Soldier
+Author: David Harrington
+URL: https://opengameart.org/content/ww2-soldier
+License: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+Notes: modified uniform to be dark gray for 'axis_soldier.png'
