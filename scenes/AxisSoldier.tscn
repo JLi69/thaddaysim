@@ -198,4 +198,5 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Buttons/Move" to="Buttons" method="_on_move_pressed"]
 [connection signal="pressed" from="Buttons/Shoot" to="Buttons" method="_on_shoot_pressed"]
+[connection signal="pressed" from="Buttons/Build" to="Buttons" method="_on_build_pressed"]
 [connection signal="pressed" from="Buttons/Landmine" to="Buttons" method="_on_landmine_pressed"]

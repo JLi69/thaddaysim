@@ -11,3 +11,7 @@ func _on_landmine_pressed() -> void:
 func _on_shoot_pressed() -> void:
 	get_parent().action = "shoot"
 	hide()
+
+func _on_build_pressed() -> void:
+	get_parent().action = "build"
+	hide()

@@ -7,6 +7,7 @@ var startx: int = 0
 var starty: int = 0
 var targetx: int = 0
 var targety: int = 0
+var building: bool = false
 @onready var tilesz = $/root/Main/Map/Tiles.tile_set.tile_size.x
 var size: Vector2i = Vector2i.ZERO
 
@@ -75,6 +76,26 @@ func get_possible_moves() -> Array[Vector2i]:
 	
 	return possible
 
+func get_possible_build() -> Array[Vector2i]:
+	var possible: Array[Vector2i] = []
+	var p = get_tile_pos()
+	var tilemap: TileMapLayer = $/root/Main/Map/Tiles
+	
+	for x in range(-4, 4 + 1):
+		for y in range(-4, 4 + 1):
+			if abs(x) + abs(y) > 4 or (x == 0 and y == 0):
+				continue
+			var pos = p + Vector2i(x, y)
+			if tilemap.get_cell_tile_data(pos) == null:
+				continue
+			if tilemap.get_cell_tile_data(pos).get_custom_data("unwalkable"):
+				continue
+			if not can_move(p.x, p.y, x, y):
+				continue
+			possible.append(pos)
+	
+	return possible
+
 func get_possible_landmines() -> Array[Vector2i]:
 	var possible: Array[Vector2i] = []
 	var p = get_tile_pos()
@@ -131,6 +152,13 @@ func _process(delta: float) -> void:
 	$Heart/HP.text = str(hp) + "/" + str(max_hp)
 	
 	var tilepos = get_tile_pos()
+	
+	# Build
+	if building and not (tilepos.x == targetx and tilepos.y == targety):
+		var obstacles: TileMapLayer = $/root/Main/Map/Obstacles
+		obstacles.set_cell(Vector2i(tilepos.x, tilepos.y), 0, Vector2i(2, 0), 0)
+	elif building and (tilepos.x == targetx and tilepos.y == targety):
+		building = false
 	
 	var target = Vector2(targetx, targety) * tilesz + Vector2(tilesz / 2.0, tilesz / 2.0 - size.y / 2.0 + size.y / 8.0)
 	var vel = Vector2.ZERO

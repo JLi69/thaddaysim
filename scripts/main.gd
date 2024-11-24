@@ -4,6 +4,7 @@ extends Node2D
 @export var landmine_outline: PackedScene
 @export var heal_outline: PackedScene
 @export var shoot_outline: PackedScene
+@export var build_outline: PackedScene
 
 @onready var tilesz: int = $Map/Tiles.tile_set.tile_size.x;
 var soldiers = []
@@ -71,6 +72,10 @@ func generate_outlines():
 			var possible = soldier.get_possible_shoot()
 			for p in possible:
 				add_outline(shoot_outline, p)
+		"build":
+			var possible = soldier.get_possible_build()
+			for p in possible:
+				add_outline(build_outline, p)
 		_:
 			pass
 

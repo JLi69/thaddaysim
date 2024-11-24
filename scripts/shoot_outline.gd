@@ -3,6 +3,12 @@ extends Sprite2D
 var tilex: int = 0
 var tiley: int = 0
 
+func _process(_delta: float) -> void:
+	if Input.is_action_pressed("camera_move"):
+		$Button.hide()
+	else:
+		$Button.show()
+
 func _on_button_pressed() -> void:
 	print("selected: ", tilex, ", ", tiley)
 	
