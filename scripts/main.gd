@@ -17,9 +17,12 @@ func convert_tile_to_world(p: Vector2i) -> Vector2:
 	return Vector2(p.x, p.y) * tilesz + Vector2(tilesz / 2, tilesz / 2)
 	
 func add_soldiers_to_queue(node: Node2D, path: String):
-	for s in node.get_children():
-		if s.animation != "default":
-			return
+	for p in node_paths:
+		for s in get_node(p).get_children():
+			if s.animation != "default":
+				current_turn -= 1
+				current_turn %= len(node_paths)
+				return
 	
 	for s in node.get_children():
 		soldiers.append(path + s.name)
@@ -101,4 +104,9 @@ func _process(_delta: float) -> void:
 	if len(soldiers) == 0:
 		$GreenOutline.hide()
 	else:
+		current_soldier = soldiers[0]
+		var soldier = get_node(current_soldier)
+		var pos = soldier.get_tile_pos()
+		var world_pos = convert_tile_to_world(pos)
+		$GreenOutline.position = world_pos
 		$GreenOutline.show()

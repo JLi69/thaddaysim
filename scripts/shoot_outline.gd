@@ -3,6 +3,8 @@ extends Sprite2D
 var tilex: int = 0
 var tiley: int = 0
 
+const knockback_speed: float = 32.0
+
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("camera_move"):
 		$Button.hide()
@@ -31,10 +33,12 @@ func _on_button_pressed() -> void:
 	
 	for child in $/root/Main/AlliedSoldiers.get_children():
 		if child.get_tile_pos().x == tilex and child.get_tile_pos().y == tiley:
+			child.knockback = Vector2(-sign(tilex - soldier.get_tile_pos().x), -sign(tiley - soldier.get_tile_pos().y)) * knockback_speed
 			child.damage()
 	
 	for child in $/root/Main/AxisSoldiers.get_children():
 		if child.get_tile_pos().x == tilex and child.get_tile_pos().y == tiley:
+			child.knockback = Vector2(-sign(tilex - soldier.get_tile_pos().x), -sign(tiley - soldier.get_tile_pos().y)) * knockback_speed
 			child.damage()
 	
 	if len($/root/Main.soldiers) > 0:
