@@ -47,13 +47,40 @@ position = Vector2(161, 119)
 [node name="AlliedSoldier3" parent="AlliedSoldiers" instance=ExtResource("3_l1mcd")]
 position = Vector2(160, 32)
 
+[node name="AlliedSoldier4" parent="AlliedSoldiers" instance=ExtResource("3_l1mcd")]
+position = Vector2(145, 159)
+
+[node name="AlliedSoldier5" parent="AlliedSoldiers" instance=ExtResource("3_l1mcd")]
+position = Vector2(146, -3.99998)
+
+[node name="AlliedSoldier6" parent="AlliedSoldiers" instance=ExtResource("3_l1mcd")]
+position = Vector2(113, 119)
+
+[node name="AlliedSoldier7" parent="AlliedSoldiers" instance=ExtResource("3_l1mcd")]
+position = Vector2(112, 32)
+
 [node name="AxisSoldiers" type="Node2D" parent="."]
 
 [node name="AxisSoldier" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
-position = Vector2(-24, 119)
+position = Vector2(-184, 119)
 
 [node name="AxisSoldier2" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
-position = Vector2(-22, 31)
+position = Vector2(-182, 31)
+
+[node name="AxisSoldier3" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
+position = Vector2(-1164, 119)
+
+[node name="AxisSoldier4" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
+position = Vector2(-1162, 31)
+
+[node name="AxisSoldier5" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
+position = Vector2(-696, 191)
+
+[node name="AxisSoldier6" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
+position = Vector2(-694, 103)
+
+[node name="AxisSoldier7" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
+position = Vector2(-696, 23)
 
 [node name="Sfx" type="Node" parent="."]
 

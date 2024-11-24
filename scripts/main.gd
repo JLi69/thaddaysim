@@ -25,6 +25,8 @@ func add_soldiers_to_queue(node: Node2D, path: String):
 				return
 	
 	for s in node.get_children():
+		if not s.visible:
+			continue
 		soldiers.append(path + s.name)
 
 func _ready() -> void:
@@ -85,7 +87,7 @@ func generate_outlines():
 func _process(_delta: float) -> void:
 	generate_outlines()
 	
-	if Input.is_action_pressed("cancel") and $Outlines.get_child_count() > 0 and len(soldiers) > 0:
+	if Input.is_action_pressed("cancel") and len(soldiers) > 0:
 		var soldier = get_node(soldiers[0])
 		soldier.action = ""
 		soldier.get_node("Buttons").show()

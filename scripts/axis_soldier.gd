@@ -39,7 +39,11 @@ func get_world_pos() -> Vector2:
 	return Vector2(px, py)
 	
 func can_move(px: int, py: int, dx: int, dy: int) -> bool:
-	var pos = Vector2(px, py)
+	for child in $/root/Main/AlliedSoldiers.get_children():
+		if child.get_tile_pos() == Vector2i(px + dx, py + dy):
+			return false
+	
+	var pos = Vector2(px + 0.5, py + 0.5)
 	var d = Vector2(dx, dy)
 	var obstacles: TileMapLayer = $/root/Main/Map/Obstacles
 	if obstacles.get_cell_tile_data(Vector2i(px + dx, py + dy)) != null and obstacles.get_cell_tile_data(Vector2i(px + dx, py + dy)).get_custom_data("wall"):
@@ -48,7 +52,7 @@ func can_move(px: int, py: int, dx: int, dy: int) -> bool:
 		return true
 	while d.length() > 0.1:
 		var dist = min(d.length(), 0.1)
-		var diff = d * dist
+		var diff = d / d.length() * dist
 		d -= diff
 		pos += diff
 		if obstacles.get_cell_tile_data(Vector2i(floor(pos.x), floor(pos.y))) == null:
@@ -64,7 +68,7 @@ func get_possible_moves() -> Array[Vector2i]:
 	
 	for x in range(-6, 6 + 1):
 		for y in range(-6, 6 + 1):
-			if abs(x) + abs(y) > 6 or (x == 0 and y == 0):
+			if x == 0 and y == 0:
 				continue
 			var pos = p + Vector2i(x, y)
 			if tilemap.get_cell_tile_data(pos) == null:
@@ -77,21 +81,58 @@ func get_possible_moves() -> Array[Vector2i]:
 	
 	return possible
 
+func can_build(px: int, py: int, dx: int, dy: int) -> bool:
+	var pos = Vector2(px + 0.5, py + 0.5)
+	var d = Vector2(dx, dy)
+	if d.length() == 0.0:
+		return true
+	
+	for child in $/root/Main/AxisSoldiers.get_children():
+		if child.get_tile_pos() == Vector2i(px, py) and child.name != name:
+			return false
+	for child in $/root/Main/AlliedSoldiers.get_children():
+		if child.get_tile_pos() == Vector2i(px, py):
+			return false
+	
+	var obstacles = $/root/Main/Map/Obstacles
+	
+	while d.length() > 0.1:
+		var dist = min(d.length(), 0.1)
+		var diff = d / d.length() * dist
+		d -= diff
+		pos += diff
+		
+		var tilex = int(floor(pos.x))
+		var tiley = int(floor(pos.y))
+		
+		if obstacles.get_cell_tile_data(Vector2i(tilex, tiley)) != null and obstacles.get_cell_tile_data(Vector2i(tilex, tiley)).get_custom_data("landmine"):
+			return false
+		
+		for child in $/root/Main/AxisSoldiers.get_children():
+			if child.get_tile_pos() == Vector2i(tilex, tiley) and child.name != name:
+				return false
+		for child in $/root/Main/AlliedSoldiers.get_children():
+			if child.get_tile_pos() == Vector2i(tilex, tiley):
+				return false
+	return true
+
 func get_possible_build() -> Array[Vector2i]:
 	var possible: Array[Vector2i] = []
 	var p = get_tile_pos()
 	var tilemap: TileMapLayer = $/root/Main/Map/Tiles
 	
-	for x in range(-4, 4 + 1):
-		for y in range(-4, 4 + 1):
-			if abs(x) + abs(y) > 4 or (x == 0 and y == 0):
-				continue
+	for x in range(-3, 3 + 1):
+		for y in range(-3, 3 + 1):
 			var pos = p + Vector2i(x, y)
+			if x == 0 and y == 0:
+				continue
 			if tilemap.get_cell_tile_data(pos) == null:
 				continue
 			if tilemap.get_cell_tile_data(pos).get_custom_data("unwalkable"):
 				continue
 			if not can_move(p.x, p.y, x, y):
+				continue
+			if not can_build(p.x, p.y, x, y):
 				continue
 			possible.append(pos)
 	
@@ -214,7 +255,8 @@ func _process(delta: float) -> void:
 	# Build
 	if building and not (tilepos.x == targetx and tilepos.y == targety):
 		var obstacles: TileMapLayer = $/root/Main/Map/Obstacles
-		obstacles.set_cell(Vector2i(tilepos.x, tilepos.y), 0, Vector2i(2, 0), 0)
+		if obstacles.get_cell_tile_data(Vector2i(tilepos.x, tilepos.y)) == null:
+			obstacles.set_cell(Vector2i(tilepos.x, tilepos.y), 0, Vector2i(2, 0), 0)
 	elif building and (tilepos.x == targetx and tilepos.y == targety):
 		building = false
 	

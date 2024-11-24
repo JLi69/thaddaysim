@@ -184,6 +184,12 @@ func count_landmines_yx(px: int, py: int, dx: int, dy: int) -> int:
 	
 	return count
 
+func space_occupied(px: int, py: int, dx: int, dy: int) -> bool:
+	for child in $/root/Main/AxisSoldiers.get_children():
+		if child.get_tile_pos() == Vector2i(px + dx, py + dy):
+			return true
+	return false
+
 func get_possible_moves() -> Array[Vector2i]:
 	var possible: Array[Vector2i] = []
 	var p = get_tile_pos()
@@ -191,7 +197,7 @@ func get_possible_moves() -> Array[Vector2i]:
 	
 	for x in range(-6, 6 + 1):
 		for y in range(-6, 6 + 1):
-			if abs(x) + abs(y) > 6 or (x == 0 and y == 0):
+			if x == 0 and y == 0:
 				continue
 			var pos = p + Vector2i(x, y)
 			if tilemap.get_cell_tile_data(pos) == null:
@@ -199,6 +205,8 @@ func get_possible_moves() -> Array[Vector2i]:
 			if tilemap.get_cell_tile_data(pos).get_custom_data("unwalkable"):
 				continue
 			if (not can_move_xy(p.x, p.y, x, y)) and (not can_move_yx(p.x, p.y, x, y)):
+				continue
+			if space_occupied(p.x, p.y, x, y):
 				continue
 			possible.append(pos)
 	
