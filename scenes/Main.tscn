@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxv67g8bhi1nr"]
+[gd_scene load_steps=14 format=3 uid="uid://bxv67g8bhi1nr"]
 
 [ext_resource type="PackedScene" uid="uid://bqba5ctam7o1b" path="res://scenes/Map.tscn" id="1_p4d56"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_vm824"]
@@ -8,14 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://bawr4pjkldab3" path="res://scenes/LandmineOutline.tscn" id="3_nf2ko"]
 [ext_resource type="PackedScene" uid="uid://b5k52x06b8fwj" path="res://scenes/HealOutline.tscn" id="4_355jv"]
 [ext_resource type="Texture2D" uid="uid://sv8vm6pk0834" path="res://art/green_outline.png" id="4_wmuwv"]
+[ext_resource type="PackedScene" uid="uid://d3kuajw250twv" path="res://scenes/ShootOutline.tscn" id="5_dmu70"]
 [ext_resource type="PackedScene" uid="uid://cndr272gpptp8" path="res://scenes/AxisSoldier.tscn" id="7_jrkdo"]
 [ext_resource type="AudioStream" uid="uid://cp4lr38tswe3q" path="res://sfx/heal.wav" id="10_11msm"]
+[ext_resource type="AudioStream" uid="uid://cm26klfmaxmtt" path="res://sfx/shoot.wav" id="12_fx1kf"]
+[ext_resource type="AudioStream" uid="uid://cqi5edjincovv" path="res://sfx/grunt.wav" id="13_o6fos"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vm824")
 white_outline = ExtResource("2_qhejk")
 landmine_outline = ExtResource("3_nf2ko")
 heal_outline = ExtResource("4_355jv")
+shoot_outline = ExtResource("5_dmu70")
 
 [node name="Map" parent="." instance=ExtResource("1_p4d56")]
 
@@ -53,3 +57,10 @@ position = Vector2(-22, 31)
 
 [node name="Heal" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("10_11msm")
+
+[node name="Shoot" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("12_fx1kf")
+
+[node name="Grunt" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("13_o6fos")
+volume_db = 6.5

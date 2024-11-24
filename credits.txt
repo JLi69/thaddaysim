@@ -10,3 +10,15 @@ Author: David Harrington
 URL: https://opengameart.org/content/ww2-soldier
 License: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
 Notes: modified uniform to be dark gray for 'axis_soldier.png'
+
+File: shoot.wav
+Author: KuraiWolf
+URL: https://opengameart.org/content/light-machine-gun
+License: CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+Notes: Modifications made: Cut audio and converted to wav file format
+
+File: grunt.wav
+Author: n3b
+URL: https://opengameart.org/content/grunt
+License: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+Notes: Modifications made: Cut audio

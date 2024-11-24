@@ -142,6 +142,7 @@ scale = Vector2(0.46875, 0.175781)
 texture = ExtResource("3_ojkwm")
 
 [node name="Buttons" type="Node2D" parent="."]
+z_index = 1
 script = ExtResource("4_wx0ji")
 
 [node name="Move" type="Button" parent="Buttons"]
@@ -200,4 +201,5 @@ text = "hp/max hp"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Buttons/Move" to="Buttons" method="_on_move_pressed"]
+[connection signal="pressed" from="Buttons/Shoot" to="Buttons" method="_on_shoot_pressed"]
 [connection signal="pressed" from="Buttons/Heal" to="Buttons" method="_on_heal_pressed"]

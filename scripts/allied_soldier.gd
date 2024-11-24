@@ -16,11 +16,22 @@ var action: String = ""
 @export var hp: int = 8
 @export var max_hp: int = 8
 
+func damage():
+	var particles = effect_particles.instantiate()
+	particles.modulate = Color.RED
+	particles.position = position
+	$/root/Main.add_child(particles)
+	$/root/Main/Sfx/Grunt.play()
+	hp -= 1
+	if hp <= 0:
+		queue_free()
+
 func heal():
 	if hp < max_hp:
 		var particles = effect_particles.instantiate()
 		particles.modulate = Color.LIME_GREEN
-		add_child(particles)
+		particles.position = position
+		$/root/Main.add_child(particles)
 		$/root/Main/Sfx/Heal.play()
 	hp += 1
 	hp = min(max_hp, hp)
@@ -198,8 +209,23 @@ func get_possible_heal() -> Array[Vector2i]:
 	for x in range(-2, 2 + 1):
 		if x == 0:
 			continue
-		possible.push_back(p + Vector2i(x, 0))
-		possible.push_back(p + Vector2i(0, x))
+		if can_move_xy(p.x, p.y, x, 0):
+			possible.push_back(p + Vector2i(x, 0))
+		if can_move_xy(p.x, p.y, 0, x):
+			possible.push_back(p + Vector2i(0, x))
+	
+	return possible
+
+func get_possible_shoot() -> Array[Vector2i]:
+	var possible: Array[Vector2i] = []
+	var p = get_tile_pos()
+	for x in range(-3, 3 + 1):
+		if x == 0:
+			continue
+		if can_move_xy(p.x, p.y, x, 0) or can_move_xy(p.x, p.y, x - sign(x), 0):
+			possible.push_back(p + Vector2i(x, 0))
+		if can_move_xy(p.x, p.y, 0, x) or can_move_xy(p.x, p.y, 0, x - sign(x)):
+			possible.push_back(p + Vector2i(0, x))
 	
 	return possible
 

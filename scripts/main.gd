@@ -3,6 +3,7 @@ extends Node2D
 @export var white_outline: PackedScene
 @export var landmine_outline: PackedScene
 @export var heal_outline: PackedScene
+@export var shoot_outline: PackedScene
 
 @onready var tilesz: int = $Map/Tiles.tile_set.tile_size.x;
 var soldiers = []
@@ -30,6 +31,13 @@ func _ready() -> void:
 		$Camera2D.position = get_node(soldiers[0]).position
 		$Camera2D.position.y += get_node(soldiers[0]).size.y / 8.0 * 3.0
 
+func add_outline(scene: PackedScene, p: Vector2i):
+	var outline = scene.instantiate()
+	outline.tilex = p.x
+	outline.tiley = p.y
+	outline.position = convert_tile_to_world(p)
+	$Outlines.add_child(outline)
+
 func generate_outlines():
 	if len(soldiers) == 0:
 		return
@@ -46,30 +54,25 @@ func generate_outlines():
 	if $Outlines.get_child_count() > 0:
 		return
 	
-	if soldier.action == "move":
-		var possible = soldier.get_possible_moves()
-		for p in possible:
-			var outline = white_outline.instantiate()
-			outline.tilex = p.x
-			outline.tiley = p.y
-			outline.position = convert_tile_to_world(p)
-			$Outlines.add_child(outline)
-	elif soldier.action == "landmine":
-		var possible = soldier.get_possible_landmines()
-		for p in possible:
-			var outline = landmine_outline.instantiate()
-			outline.tilex = p.x
-			outline.tiley = p.y
-			outline.position = convert_tile_to_world(p)
-			$Outlines.add_child(outline)
-	elif soldier.action == "heal":
-		var possible = soldier.get_possible_heal()
-		for p in possible:
-			var outline = heal_outline.instantiate()
-			outline.tilex = p.x
-			outline.tiley = p.y
-			outline.position = convert_tile_to_world(p)
-			$Outlines.add_child(outline)
+	match soldier.action:
+		"move":
+			var possible = soldier.get_possible_moves()
+			for p in possible:
+				add_outline(white_outline, p)
+		"landmine":
+			var possible = soldier.get_possible_landmines()
+			for p in possible:
+				add_outline(landmine_outline, p)
+		"heal":
+			var possible = soldier.get_possible_heal()
+			for p in possible:
+				add_outline(heal_outline, p)
+		"shoot":
+			var possible = soldier.get_possible_shoot()
+			for p in possible:
+				add_outline(shoot_outline, p)
+		_:
+			pass
 
 func _process(_delta: float) -> void:
 	generate_outlines()
@@ -86,8 +89,9 @@ func _process(_delta: float) -> void:
 		current_turn += 1
 		current_turn %= len(node_paths)
 		add_soldiers_to_queue(get_node(node_paths[current_turn]), node_paths[current_turn])
-		var world_pos = get_node(soldiers[0]).get_world_pos()
-		$Camera2D.start_zooming(world_pos.x, world_pos.y)
+		if len(soldiers) > 0:
+			var world_pos = get_node(soldiers[0]).get_world_pos()
+			$Camera2D.start_zooming(world_pos.x, world_pos.y)
 	
 	if len(soldiers) == 0:
 		$GreenOutline.hide()

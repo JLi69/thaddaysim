@@ -1,6 +1,7 @@
 extends AnimatedSprite2D
 
 @export var walking_speed: float = 0.0
+@export var effect_particles: PackedScene
 
 var startx: int = 0
 var starty: int = 0
@@ -13,6 +14,16 @@ var action: String = ""
 
 @export var hp: int = 16
 @export var max_hp: int = 16
+
+func damage():
+	var particles = effect_particles.instantiate()
+	particles.modulate = Color.RED
+	particles.position = position
+	$/root/Main.add_child(particles)
+	$/root/Main/Sfx/Grunt.play()
+	hp -= 1
+	if hp <= 0:
+		queue_free()
 
 func get_tile_pos() -> Vector2i:
 	var px = int(floor(position.x / tilesz))
@@ -86,6 +97,20 @@ func get_possible_landmines() -> Array[Vector2i]:
 			if not can_move(p.x, p.y, x, y):
 				continue
 			possible.append(pos)
+	
+	return possible
+
+func get_possible_shoot():
+	var possible: Array[Vector2i] = []
+	var p = get_tile_pos()
+	# Axis soldiers have a slightly larger range for shooting
+	for x in range(-4, 4 + 1):
+		if x == 0:
+			continue
+		if can_move(p.x, p.y, x, 0) or can_move(p.x, p.y, x - sign(x), 0):
+			possible.push_back(p + Vector2i(x, 0))
+		if can_move(p.x, p.y, 0, x) or can_move(p.x, p.y, 0, x - sign(x)):
+			possible.push_back(p + Vector2i(0, x))
 	
 	return possible
 
