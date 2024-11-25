@@ -7,15 +7,27 @@ extends Camera2D
 
 var zooming_in: bool = false
 var zoom_target: Vector2 = Vector2(0.0, 0.0)
+var zoom_timer: float = 0.0
+const ZOOM_DELAY = 1.25
 
 const zoom_speed: float = 0.1
 const margin_x: float = 320.0
 
 func start_zooming(x: float, y: float):
+	if (position - Vector2(x, y)).length() * zoom.x < get_viewport_rect().size.y / 2.0:
+		return
 	zooming_in = true
 	zoom_target = Vector2(x, y)
+	zoom_timer = ZOOM_DELAY
 
 func zoom_in(delta: float) -> void:
+	var current_soldier = $/root/Main.get_node_or_null($/root/Main.current_soldier)
+	if current_soldier != null and current_soldier.animation != "default":
+		return
+	zoom_timer -= delta
+	if zoom_timer > 0.0:
+		return
+	
 	zoom.x += (default_zoom - zoom.x) * delta
 	zoom.y = zoom.x
 	

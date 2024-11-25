@@ -88,6 +88,13 @@ func generate_outlines():
 			pass
 
 func _process(_delta: float) -> void:
+	var current_soldier_node = get_node_or_null(current_soldier)
+	if current_soldier_node != null:
+		# Soldier is moving
+		if current_soldier_node.animation != "default":
+			$GreenOutline.hide()
+			return
+	
 	generate_outlines()
 	
 	if Input.is_action_pressed("cancel") and len(soldiers) > 0:
