@@ -17,7 +17,7 @@ var node_paths = [ "AlliedSoldiers/", "AxisSoldiers/" ]
 var current_turn: int = 0
 
 func convert_tile_to_world(p: Vector2i) -> Vector2:
-	return Vector2(p.x, p.y) * tilesz + Vector2(tilesz / 2, tilesz / 2)
+	return Vector2(p.x, p.y) * tilesz + Vector2(float(tilesz) / 2.0, float(tilesz) / 2.0)
 	
 func add_soldiers_to_queue(node: Node2D, path: String):
 	for p in node_paths:
