@@ -7,6 +7,8 @@ extends Node2D
 @export var build_outline: PackedScene
 @export var grenade_outline: PackedScene
 
+var game_over: bool = false
+
 @onready var tilesz: int = $Map/Tiles.tile_set.tile_size.x;
 var soldiers = []
 var current_soldier: String = ""
@@ -50,7 +52,7 @@ func generate_outlines():
 		return
 	
 	current_soldier = soldiers[0]
-	var soldier = get_node(current_soldier)
+	var soldier = get_node_or_null(current_soldier)
 	if soldier == null:
 		soldiers.remove_at(0)
 		return
@@ -93,6 +95,9 @@ func generate_outlines():
 			pass
 
 func _process(_delta: float) -> void:
+	if game_over:
+		return
+	
 	var current_soldier_node = get_node_or_null(current_soldier)
 	if current_soldier_node != null:
 		# Soldier is moving

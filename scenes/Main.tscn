@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bxv67g8bhi1nr"]
+[gd_scene load_steps=20 format=3 uid="uid://bxv67g8bhi1nr"]
 
 [ext_resource type="PackedScene" uid="uid://bqba5ctam7o1b" path="res://scenes/Map.tscn" id="1_p4d56"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_vm824"]
@@ -16,6 +16,9 @@
 [ext_resource type="AudioStream" uid="uid://cm26klfmaxmtt" path="res://sfx/shoot.wav" id="12_fx1kf"]
 [ext_resource type="AudioStream" uid="uid://cqi5edjincovv" path="res://sfx/grunt.wav" id="13_o6fos"]
 [ext_resource type="AudioStream" uid="uid://eysehighwmff" path="res://sfx/explosion.wav" id="15_nbspw"]
+[ext_resource type="Script" path="res://scripts/win_screen.gd" id="17_fq8w2"]
+[ext_resource type="FontFile" uid="uid://b3j21gnxq1jn1" path="res://fonts/8BitOperator/8bitOperatorPlus8-Bold.ttf" id="18_1enln"]
+[ext_resource type="PackedScene" uid="uid://cgtd2n157ab08" path="res://scenes/Flag.tscn" id="19_etkmp"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vm824")
@@ -84,3 +87,44 @@ volume_db = 6.5
 
 [node name="Explosion" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("15_nbspw")
+
+[node name="WinScreen" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("17_fq8w2")
+
+[node name="Control" type="Control" parent="WinScreen"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="WinScreen/Control"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.144063, 0.144063, 0.144063, 0.203922)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen/Control"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+alignment = 1
+
+[node name="WinText" type="Label" parent="WinScreen/Control/VBoxContainer"]
+z_index = 32
+layout_mode = 2
+theme_override_fonts/font = ExtResource("18_1enln")
+theme_override_font_sizes/font_size = 80
+text = "Hello World"
+horizontal_alignment = 1
+
+[node name="Subtext" type="Label" parent="WinScreen/Control/VBoxContainer"]
+z_index = 32
+layout_mode = 2
+theme_override_fonts/font = ExtResource("18_1enln")
+theme_override_font_sizes/font_size = 32
+text = "Hello World"
+horizontal_alignment = 1
+
+[node name="Flag" parent="." instance=ExtResource("19_etkmp")]
+position = Vector2(-1328, 66)

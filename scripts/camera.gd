@@ -60,6 +60,10 @@ func zoom_in(delta: float) -> void:
 		zooming_in = false
 
 func _process(delta: float) -> void:
+	# do not zoom in if it's game over
+	if $/root/Main.game_over:
+		zooming_in = false
+	
 	if Input.is_action_just_pressed("camera_stop_zoom"):
 		zooming_in = false
 	
