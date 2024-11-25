@@ -50,6 +50,9 @@ func generate_outlines():
 	
 	current_soldier = soldiers[0]
 	var soldier = get_node(current_soldier)
+	if soldier == null:
+		soldiers.remove_at(0)
+		return
 	var pos = soldier.get_tile_pos()
 	var world_pos = convert_tile_to_world(pos)
 	$GreenOutline.position = world_pos
@@ -108,7 +111,8 @@ func _process(_delta: float) -> void:
 	else:
 		current_soldier = soldiers[0]
 		var soldier = get_node(current_soldier)
-		var pos = soldier.get_tile_pos()
-		var world_pos = convert_tile_to_world(pos)
-		$GreenOutline.position = world_pos
-		$GreenOutline.show()
+		if soldier != null:
+			var pos = soldier.get_tile_pos()
+			var world_pos = convert_tile_to_world(pos)
+			$GreenOutline.position = world_pos
+			$GreenOutline.show()

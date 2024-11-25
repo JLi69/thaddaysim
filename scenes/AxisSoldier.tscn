@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://cndr272gpptp8"]
+[gd_scene load_steps=25 format=3 uid="uid://cndr272gpptp8"]
 
 [ext_resource type="Texture2D" uid="uid://b4cnnpdivfsmu" path="res://art/axis_soldier.png" id="1_05sra"]
 [ext_resource type="Script" path="res://scripts/axis_soldier.gd" id="2_057vq"]
 [ext_resource type="Texture2D" uid="uid://dtl8xc6daks87" path="res://art/shadow.png" id="2_geepr"]
 [ext_resource type="PackedScene" uid="uid://yxiohtrg0qwm" path="res://scenes/EffectParticles.tscn" id="3_onph2"]
 [ext_resource type="Script" path="res://scripts/axis_soldier_buttons.gd" id="4_ledci"]
+[ext_resource type="PackedScene" uid="uid://2fymeh4f7fn" path="res://scenes/Explosion.tscn" id="4_sumry"]
 [ext_resource type="FontFile" uid="uid://b83lr4reqbm0y" path="res://fonts/8BitOperator/8bitOperatorPlus8-Regular.ttf" id="5_if13f"]
 [ext_resource type="Texture2D" uid="uid://gtmsubhl8mbc" path="res://art/heart.png" id="6_dp8f4"]
 
@@ -134,6 +135,7 @@ autoplay = "default"
 script = ExtResource("2_057vq")
 walking_speed = 32.0
 effect_particles = ExtResource("3_onph2")
+explosion = ExtResource("4_sumry")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxv67g8bhi1nr"]
+[gd_scene load_steps=16 format=3 uid="uid://bxv67g8bhi1nr"]
 
 [ext_resource type="PackedScene" uid="uid://bqba5ctam7o1b" path="res://scenes/Map.tscn" id="1_p4d56"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_vm824"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cp4lr38tswe3q" path="res://sfx/heal.wav" id="10_11msm"]
 [ext_resource type="AudioStream" uid="uid://cm26klfmaxmtt" path="res://sfx/shoot.wav" id="12_fx1kf"]
 [ext_resource type="AudioStream" uid="uid://cqi5edjincovv" path="res://sfx/grunt.wav" id="13_o6fos"]
+[ext_resource type="AudioStream" uid="uid://eysehighwmff" path="res://sfx/explosion.wav" id="15_nbspw"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vm824")
@@ -50,15 +51,6 @@ position = Vector2(160, 32)
 [node name="AlliedSoldier4" parent="AlliedSoldiers" instance=ExtResource("3_l1mcd")]
 position = Vector2(145, 159)
 
-[node name="AlliedSoldier5" parent="AlliedSoldiers" instance=ExtResource("3_l1mcd")]
-position = Vector2(146, -3.99998)
-
-[node name="AlliedSoldier6" parent="AlliedSoldiers" instance=ExtResource("3_l1mcd")]
-position = Vector2(113, 119)
-
-[node name="AlliedSoldier7" parent="AlliedSoldiers" instance=ExtResource("3_l1mcd")]
-position = Vector2(112, 32)
-
 [node name="AxisSoldiers" type="Node2D" parent="."]
 
 [node name="AxisSoldier" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
@@ -68,18 +60,12 @@ position = Vector2(-184, 119)
 position = Vector2(-182, 31)
 
 [node name="AxisSoldier3" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
-position = Vector2(-1164, 119)
-
-[node name="AxisSoldier4" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
-position = Vector2(-1162, 31)
-
-[node name="AxisSoldier5" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
 position = Vector2(-696, 191)
 
-[node name="AxisSoldier6" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
+[node name="AxisSoldier4" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
 position = Vector2(-694, 103)
 
-[node name="AxisSoldier7" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
+[node name="AxisSoldier5" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
 position = Vector2(-696, 23)
 
 [node name="Sfx" type="Node" parent="."]
@@ -93,3 +79,6 @@ stream = ExtResource("12_fx1kf")
 [node name="Grunt" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("13_o6fos")
 volume_db = 6.5
+
+[node name="Explosion" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("15_nbspw")

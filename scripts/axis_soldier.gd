@@ -2,6 +2,7 @@ extends AnimatedSprite2D
 
 @export var walking_speed: float = 0.0
 @export var effect_particles: PackedScene
+@export var explosion: PackedScene
 
 var startx: int = 0
 var starty: int = 0
@@ -17,13 +18,13 @@ var action: String = ""
 @export var hp: int = 16
 @export var max_hp: int = 16
 
-func damage():
+func damage(amt: int = 1):
 	var particles = effect_particles.instantiate()
 	particles.modulate = Color.RED
 	particles.position = position
 	$/root/Main.add_child(particles)
 	$/root/Main/Sfx/Grunt.play()
-	hp -= 1
+	hp -= amt
 	if hp <= 0:
 		queue_free()
 
@@ -38,11 +39,13 @@ func get_world_pos() -> Vector2:
 	var py = tile_pos.y * tilesz + tilesz / 2.0 - size.y / 2.0 + size.y / 8.0
 	return Vector2(px, py)
 	
-func can_move(px: int, py: int, dx: int, dy: int) -> bool:
+func space_occupied(px: int, py: int, dx: int, dy: int) -> bool:
 	for child in $/root/Main/AlliedSoldiers.get_children():
 		if child.get_tile_pos() == Vector2i(px + dx, py + dy):
-			return false
+			return true
+	return false
 	
+func can_move(px: int, py: int, dx: int, dy: int) -> bool:
 	var pos = Vector2(px + 0.5, py + 0.5)
 	var d = Vector2(dx, dy)
 	var obstacles: TileMapLayer = $/root/Main/Map/Obstacles
@@ -76,6 +79,8 @@ func get_possible_moves() -> Array[Vector2i]:
 			if tilemap.get_cell_tile_data(pos).get_custom_data("unwalkable"):
 				continue
 			if not can_move(p.x, p.y, x, y):
+				continue
+			if space_occupied(p.x, p.y, x, y):
 				continue
 			possible.append(pos)
 	
@@ -246,11 +251,24 @@ func handle_knockback(delta: float) -> void:
 		starty = tilepos.y
 		return
 
+func check_if_step_on_landmine():
+	var obstacles: TileMapLayer = $/root/Main/Map/Obstacles
+	var tilepos = get_tile_pos()
+	if obstacles.get_cell_tile_data(tilepos) == null:
+		return
+	if obstacles.get_cell_tile_data(tilepos).get_custom_data("landmine"):
+		obstacles.set_cell(tilepos, -1, Vector2i(0, 0), 0)
+		var e = explosion.instantiate()
+		e.position = get_world_pos() + Vector2(0.0, size.y / 2.0 - size.y / 8.0)
+		$/root/Main.add_child(e)
+
 func _process(delta: float) -> void:
 	# set health text
 	$Heart/HP.text = str(hp) + "/" + str(max_hp)
 	
 	var tilepos = get_tile_pos()
+	
+	check_if_step_on_landmine()
 	
 	# Build
 	if building and not (tilepos.x == targetx and tilepos.y == targety):

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://2fymeh4f7fn"]
+
+[ext_resource type="Texture2D" uid="uid://fi50h7onstbu" path="res://art/particle.png" id="1_8nulf"]
+[ext_resource type="Script" path="res://scripts/explosion.gd" id="2_q4o2o"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6qmdy"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+radial_velocity_min = 80.0
+radial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.4
+color = Color(1, 0, 0, 1)
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.17
+
+[node name="Explosion" type="GPUParticles2D"]
+emitting = false
+amount = 75
+process_material = SubResource("ParticleProcessMaterial_6qmdy")
+texture = ExtResource("1_8nulf")
+one_shot = true
+explosiveness = 0.8
+script = ExtResource("2_q4o2o")

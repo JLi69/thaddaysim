@@ -1,6 +1,7 @@
 extends AnimatedSprite2D
 
 @export var effect_particles: PackedScene
+@export var explosion: PackedScene
 
 @export var walking_speed: float = 0.0
 
@@ -17,13 +18,13 @@ var action: String = ""
 @export var hp: int = 8
 @export var max_hp: int = 8
 
-func damage():
+func damage(amt: int = 1):
 	var particles = effect_particles.instantiate()
 	particles.modulate = Color.RED
 	particles.position = position
 	$/root/Main.add_child(particles)
 	$/root/Main/Sfx/Grunt.play()
-	hp -= 1
+	hp -= amt
 	if hp <= 0:
 		queue_free()
 
@@ -195,8 +196,8 @@ func get_possible_moves() -> Array[Vector2i]:
 	var p = get_tile_pos()
 	var tilemap: TileMapLayer = $/root/Main/Map/Tiles
 	
-	for x in range(-6, 6 + 1):
-		for y in range(-6, 6 + 1):
+	for x in range(-4, 4 + 1):
+		for y in range(-4, 4 + 1):
 			if x == 0 and y == 0:
 				continue
 			var pos = p + Vector2i(x, y)
@@ -284,11 +285,24 @@ func handle_knockback(delta: float) -> void:
 		knockback = Vector2.ZERO
 		return
 
+func check_if_step_on_landmine():
+	var obstacles: TileMapLayer = $/root/Main/Map/Obstacles
+	var tilepos = get_tile_pos()
+	if obstacles.get_cell_tile_data(tilepos) == null:
+		return
+	if obstacles.get_cell_tile_data(tilepos).get_custom_data("landmine"):
+		obstacles.set_cell(tilepos, -1, Vector2i(0, 0), 0)
+		var e = explosion.instantiate()
+		e.position = get_world_pos() + Vector2(0.0, size.y / 2.0 - size.y / 8.0)
+		$/root/Main.add_child(e)
+
 func _process(delta: float) -> void:
 	# set health text
 	$Heart/HP.text = str(hp) + "/" + str(max_hp)
 	
 	var tilepos = get_tile_pos()
+	
+	check_if_step_on_landmine()
 	
 	var diff = Vector2i(targetx - startx, targety - starty)
 	var target = Vector2(targetx, targety) * tilesz + Vector2(tilesz / 2.0, tilesz / 2.0 - size.y / 2.0 + size.y / 8.0)
