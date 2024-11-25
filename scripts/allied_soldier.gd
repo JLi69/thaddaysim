@@ -239,6 +239,25 @@ func get_possible_shoot() -> Array[Vector2i]:
 	
 	return possible
 
+func can_grenade(pos: Vector2i, diff: Vector2i, dist: int) -> bool:
+	var obstacles: TileMapLayer = $/root/Main/Map/Obstacles
+	for i in range(0, dist + 1):
+		var p = pos + diff * i
+		if obstacles.get_cell_tile_data(p) != null and obstacles.get_cell_tile_data(p).get_custom_data("wall"):
+			return false
+	return true
+
+func get_possible_grenade() -> Array[Vector2i]:
+	var possible: Array[Vector2i] = []
+	var p = get_tile_pos()
+	var dist = 4
+	var diff = [Vector2i(1, 1), Vector2i(-1, 1), Vector2i(1, -1), Vector2i(-1, -1)]
+	for d in diff:
+		if not can_grenade(p, d, dist):
+			continue
+		possible.push_back(p + d * dist)
+	return possible
+
 func _ready() -> void:
 	var fsize = sprite_frames.get_frame_texture("default", 0).get_size()
 	size = fsize

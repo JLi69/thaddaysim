@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxv67g8bhi1nr"]
+[gd_scene load_steps=17 format=3 uid="uid://bxv67g8bhi1nr"]
 
 [ext_resource type="PackedScene" uid="uid://bqba5ctam7o1b" path="res://scenes/Map.tscn" id="1_p4d56"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_vm824"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://sv8vm6pk0834" path="res://art/green_outline.png" id="4_wmuwv"]
 [ext_resource type="PackedScene" uid="uid://d3kuajw250twv" path="res://scenes/ShootOutline.tscn" id="5_dmu70"]
 [ext_resource type="PackedScene" uid="uid://dqhv7u2vso48p" path="res://scenes/BuildOutline.tscn" id="6_jtqhu"]
+[ext_resource type="PackedScene" uid="uid://bn2axb2ysk774" path="res://scenes/GrenadeOutline.tscn" id="7_iyfmw"]
 [ext_resource type="PackedScene" uid="uid://cndr272gpptp8" path="res://scenes/AxisSoldier.tscn" id="7_jrkdo"]
 [ext_resource type="AudioStream" uid="uid://cp4lr38tswe3q" path="res://sfx/heal.wav" id="10_11msm"]
 [ext_resource type="AudioStream" uid="uid://cm26klfmaxmtt" path="res://sfx/shoot.wav" id="12_fx1kf"]
@@ -23,6 +24,7 @@ landmine_outline = ExtResource("3_nf2ko")
 heal_outline = ExtResource("4_355jv")
 shoot_outline = ExtResource("5_dmu70")
 build_outline = ExtResource("6_jtqhu")
+grenade_outline = ExtResource("7_iyfmw")
 
 [node name="Map" parent="." instance=ExtResource("1_p4d56")]
 

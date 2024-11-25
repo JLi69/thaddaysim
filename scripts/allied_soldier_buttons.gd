@@ -11,3 +11,7 @@ func _on_heal_pressed() -> void:
 func _on_shoot_pressed() -> void:
 	get_parent().action = "shoot"
 	hide()
+
+func _on_grenade_pressed() -> void:
+	get_parent().action = "grenade"
+	hide()

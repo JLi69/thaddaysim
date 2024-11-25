@@ -204,4 +204,5 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Buttons/Move" to="Buttons" method="_on_move_pressed"]
 [connection signal="pressed" from="Buttons/Shoot" to="Buttons" method="_on_shoot_pressed"]
+[connection signal="pressed" from="Buttons/Grenade" to="Buttons" method="_on_grenade_pressed"]
 [connection signal="pressed" from="Buttons/Heal" to="Buttons" method="_on_heal_pressed"]
