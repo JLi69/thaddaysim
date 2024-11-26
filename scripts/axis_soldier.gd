@@ -169,6 +169,8 @@ func get_possible_landmines() -> Array[Vector2i]:
 				continue
 			if not can_move(p.x, p.y, x, y):
 				continue
+			if $/root/Main/Flag.get_tile_pos() == pos:
+				continue
 			possible.append(pos)
 	
 	return possible
