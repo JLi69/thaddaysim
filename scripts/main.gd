@@ -95,6 +95,9 @@ func generate_outlines():
 			pass
 
 func _process(_delta: float) -> void:
+	while len($/root/Main.soldiers) > 0 and $/root/Main.get_node_or_null($/root/Main.soldiers[0]) == null:
+		$/root/Main.soldiers.remove_at(0)
+	
 	if game_over:
 		return
 	

@@ -15,6 +15,8 @@ func _on_button_pressed() -> void:
 	print("selected: ", tilex, ", ", tiley)
 	
 	$/root/Main.soldiers.remove_at(0)
+	while len($/root/Main.soldiers) > 0 and $/root/Main.get_node_or_null($/root/Main.soldiers[0]) == null:
+		$/root/Main.soldiers.remove_at(0)
 	
 	var e = explosion.instantiate()
 	e.position = position

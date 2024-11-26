@@ -21,6 +21,8 @@ func _on_button_pressed() -> void:
 		obstacles.set_cell(Vector2i(tilex, tiley), -1, Vector2i(0, 0), 0)
 	
 	$/root/Main.soldiers.remove_at(0)
+	while len($/root/Main.soldiers) > 0 and $/root/Main.get_node_or_null($/root/Main.soldiers[0]) == null:
+		$/root/Main.soldiers.remove_at(0)
 	
 	$/root/Main/Sfx/Shoot.play()
 	
