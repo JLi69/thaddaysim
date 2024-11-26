@@ -98,6 +98,8 @@ func can_build(px: int, py: int, dx: int, dy: int) -> bool:
 	for child in $/root/Main/AlliedSoldiers.get_children():
 		if child.get_tile_pos() == Vector2i(px, py):
 			return false
+	if $/root/Main/Flag.get_tile_pos() == Vector2i(px, py):
+		return false
 	
 	var obstacles = $/root/Main/Map/Obstacles
 	
@@ -111,6 +113,9 @@ func can_build(px: int, py: int, dx: int, dy: int) -> bool:
 		var tiley = int(floor(pos.y))
 		
 		if obstacles.get_cell_tile_data(Vector2i(tilex, tiley)) != null and obstacles.get_cell_tile_data(Vector2i(tilex, tiley)).get_custom_data("landmine"):
+			return false
+		
+		if $/root/Main/Flag.get_tile_pos() == Vector2i(tilex, tiley):
 			return false
 		
 		for child in $/root/Main/AxisSoldiers.get_children():
