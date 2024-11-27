@@ -33,6 +33,7 @@ build_outline = ExtResource("6_jtqhu")
 grenade_outline = ExtResource("7_iyfmw")
 
 [node name="Map" parent="." instance=ExtResource("1_p4d56")]
+z_index = -3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(144, 81)
