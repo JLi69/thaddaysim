@@ -13,3 +13,7 @@ func _on_no_pressed() -> void:
 func _on_yes_pressed() -> void:
 	hide()
 	$/root/Main/MainMenu.show()
+	# Clear sounds
+	for child in $/root/Main/Sfx.get_children():
+		if child is AudioStreamPlayer:
+			child.stop()

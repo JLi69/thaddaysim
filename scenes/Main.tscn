@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxv67g8bhi1nr"]
+[gd_scene load_steps=23 format=3 uid="uid://bxv67g8bhi1nr"]
 
 [ext_resource type="PackedScene" uid="uid://bqba5ctam7o1b" path="res://scenes/Map.tscn" id="1_p4d56"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_vm824"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://cgtd2n157ab08" path="res://scenes/Flag.tscn" id="19_etkmp"]
 [ext_resource type="PackedScene" uid="uid://do3emwt7oi63q" path="res://scenes/MainMenu.tscn" id="20_via0g"]
 [ext_resource type="PackedScene" uid="uid://b07jbymu0cjdf" path="res://scenes/PauseScreen.tscn" id="21_fkse1"]
+[ext_resource type="Script" path="res://scripts/reset.gd" id="22_qbm2x"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vm824")
@@ -135,3 +136,7 @@ horizontal_alignment = 1
 
 [node name="PauseScreen" parent="." instance=ExtResource("21_fkse1")]
 visible = false
+
+[node name="Reset" type="Node2D" parent="."]
+visible = false
+script = ExtResource("22_qbm2x")

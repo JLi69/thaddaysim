@@ -22,3 +22,4 @@ func _on_tutorial_button_pressed() -> void:
 func _on_start_button_pressed() -> void:
 	get_tree().paused = false
 	hide()
+	$/root/Main/Reset.reset()
