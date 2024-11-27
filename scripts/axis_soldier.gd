@@ -4,6 +4,8 @@ extends AnimatedSprite2D
 @export var effect_particles: PackedScene
 @export var explosion: PackedScene
 
+@export var show_health: bool = true
+
 var startx: int = 0
 var starty: int = 0
 var targetx: int = 0
@@ -190,6 +192,9 @@ func get_possible_shoot():
 	return possible
 
 func _ready() -> void:
+	if not show_health:
+		$Heart.hide()
+	
 	var fsize = sprite_frames.get_frame_texture("default", 0).get_size()
 	size = fsize
 	# Lock the position of the tile grid

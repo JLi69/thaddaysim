@@ -1,0 +1,263 @@
+[gd_scene load_steps=7 format=4 uid="uid://do3emwt7oi63q"]
+
+[ext_resource type="FontFile" uid="uid://b3j21gnxq1jn1" path="res://fonts/8BitOperator/8bitOperatorPlus8-Bold.ttf" id="1_5du3k"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_f02ng"]
+[ext_resource type="TileSet" uid="uid://bu2gjd854ctix" path="res://tiles/tileset.tres" id="1_fo6dc"]
+[ext_resource type="FontFile" uid="uid://b83lr4reqbm0y" path="res://fonts/8BitOperator/8bitOperatorPlus8-Regular.ttf" id="2_bx0aa"]
+[ext_resource type="PackedScene" uid="uid://o3ai05q6n00j" path="res://scenes/AlliedSoldier.tscn" id="4_1n8dm"]
+[ext_resource type="PackedScene" uid="uid://cndr272gpptp8" path="res://scenes/AxisSoldier.tscn" id="5_p3nag"]
+
+[node name="MainMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_f02ng")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAUAAAAAAAEAAAAAAAYAAAAAAAEAAAAAAAcAAAAAAAEAAAAAAAgAAAAAAAEAAAAAAAkAAAAAAAEAAAABAAAAAAAAAAEAAAABAAEAAAAAAAEAAAABAAIAAAAAAAEAAAABAAMAAAAAAAEAAAABAAQAAAAAAAEAAAABAAUAAAAAAAEAAAABAAYAAAAAAAEAAAABAAcAAAAAAAEAAAABAAgAAAAAAAEAAAABAAkAAAAAAAEAAAACAAAAAAAAAAEAAAACAAEAAAAAAAEAAAACAAIAAAAAAAEAAAACAAMAAAAAAAEAAAACAAQAAAAAAAEAAAACAAUAAAAAAAEAAAACAAYAAAAAAAEAAAACAAcAAAAAAAEAAAACAAgAAAAAAAEAAAACAAkAAAAAAAEAAAADAAAAAAAAAAEAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAADAAMAAAAAAAEAAAADAAQAAAAAAAEAAAADAAUAAAAAAAEAAAADAAYAAAAAAAEAAAADAAcAAAAAAAEAAAADAAgAAAAAAAEAAAADAAkAAAAAAAEAAAAEAAAAAAAAAAEAAAAEAAEAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAEAAAAEAAQAAAAAAAEAAAAEAAUAAAAAAAEAAAAEAAYAAAAAAAEAAAAEAAcAAAAAAAEAAAAEAAgAAAAAAAEAAAAEAAkAAAAAAAEAAAAFAAAAAAAAAAEAAAAFAAEAAAAAAAEAAAAFAAIAAAAAAAEAAAAFAAMAAAAAAAEAAAAFAAQAAAAAAAEAAAAFAAUAAAAAAAEAAAAFAAYAAAAAAAEAAAAFAAcAAAAAAAEAAAAFAAgAAAAAAAEAAAAFAAkAAAAAAAEAAAAGAAAAAAAAAAEAAAAGAAEAAAAAAAEAAAAGAAIAAAAAAAEAAAAGAAMAAAAAAAEAAAAGAAQAAAAAAAEAAAAGAAUAAAAAAAEAAAAGAAYAAAAAAAEAAAAGAAcAAAAAAAEAAAAGAAgAAAAAAAEAAAAGAAkAAAAAAAEAAAAHAAAAAAAAAAEAAAAHAAEAAAAAAAEAAAAHAAIAAAAAAAEAAAAHAAMAAAAAAAEAAAAHAAQAAAAAAAEAAAAHAAUAAAAAAAEAAAAHAAYAAAAAAAEAAAAHAAcAAAAAAAEAAAAHAAgAAAAAAAEAAAAHAAkAAAAAAAEAAAAIAAAAAAAAAAEAAAAIAAEAAAAAAAEAAAAIAAIAAAAAAAEAAAAIAAMAAAAAAAEAAAAIAAQAAAAAAAEAAAAIAAUAAAAAAAEAAAAIAAYAAAAAAAEAAAAIAAcAAAAAAAEAAAAIAAgAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAAAAAAAAAEAAAAJAAEAAAAAAAEAAAAJAAIAAAAAAAEAAAAJAAMAAAAAAAEAAAAJAAQAAAAAAAEAAAAJAAUAAAAAAAEAAAAJAAYAAAAAAAEAAAAJAAcAAAAAAAEAAAAJAAgAAAAAAAEAAAAJAAkAAAAAAAEAAAAKAAAAAAAAAAEAAAAKAAEAAAAAAAEAAAAKAAIAAAAAAAEAAAAKAAMAAAAAAAEAAAAKAAQAAAAAAAEAAAAKAAUAAAAAAAEAAAAKAAYAAAAAAAEAAAAKAAcAAAAAAAEAAAAKAAgAAAAAAAEAAAAKAAkAAAAAAAEAAAALAAAAAAAAAAEAAAALAAEAAAAAAAEAAAALAAIAAAAAAAEAAAALAAMAAAAAAAEAAAALAAQAAAAAAAEAAAALAAUAAAAAAAEAAAALAAYAAAAAAAEAAAALAAcAAAAAAAEAAAALAAgAAAAAAAEAAAALAAkAAAAAAAEAAAAMAAAAAAAAAAEAAAAMAAEAAAAAAAEAAAAMAAIAAAAAAAEAAAAMAAMAAAAAAAEAAAAMAAQAAAAAAAEAAAAMAAUAAAAAAAEAAAAMAAYAAAAAAAEAAAAMAAcAAAAAAAEAAAAMAAgAAAAAAAEAAAAMAAkAAAAAAAEAAAANAAAAAAAAAAEAAAANAAEAAAAAAAEAAAANAAIAAAAAAAEAAAANAAMAAAAAAAEAAAANAAQAAAAAAAEAAAANAAUAAAAAAAEAAAANAAYAAAAAAAEAAAANAAcAAAAAAAEAAAANAAgAAAAAAAEAAAANAAkAAAAAAAEAAAAOAAAAAAAAAAEAAAAOAAEAAAAAAAEAAAAOAAIAAAAAAAEAAAAOAAMAAAAAAAEAAAAOAAQAAAAAAAEAAAAOAAUAAAAAAAEAAAAOAAYAAAAAAAEAAAAOAAcAAAAAAAEAAAAOAAgAAAAAAAEAAAAOAAkAAAAAAAEAAAAPAAAAAAAAAAEAAAAPAAEAAAAAAAEAAAAPAAIAAAAAAAEAAAAPAAMAAAAAAAEAAAAPAAQAAAAAAAEAAAAPAAUAAAAAAAEAAAAPAAYAAAAAAAEAAAAPAAcAAAAAAAEAAAAPAAgAAAAAAAEAAAAPAAkAAAAAAAEAAAAQAAAAAAAAAAEAAAAQAAEAAAAAAAEAAAAQAAIAAAAAAAEAAAAQAAMAAAAAAAEAAAAQAAQAAAAAAAEAAAAQAAUAAAAAAAEAAAAQAAYAAAAAAAEAAAAQAAcAAAAAAAEAAAAQAAgAAAAAAAEAAAAQAAkAAAAAAAEAAAAAAAoAAAAAAAEAAAABAAoAAAAAAAEAAAACAAoAAAAAAAEAAAADAAoAAAAAAAEAAAAEAAoAAAAAAAEAAAAFAAoAAAAAAAEAAAAGAAoAAAAAAAEAAAAHAAoAAAAAAAEAAAAIAAoAAAAAAAEAAAAJAAoAAAAAAAEAAAAKAAoAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAANAAoAAAAAAAEAAAAOAAoAAAAAAAEAAAAPAAoAAAAAAAEAAAAQAAoAAAAAAAEAAAARAAoAAAAAAAEAAAARAAAAAAAAAAEAAAARAAEAAAAAAAEAAAARAAIAAAAAAAEAAAARAAMAAAAAAAEAAAARAAQAAAAAAAEAAAARAAUAAAAAAAEAAAARAAYAAAAAAAEAAAARAAcAAAAAAAEAAAARAAgAAAAAAAEAAAARAAkAAAAAAAEAAAA=")
+tile_set = ExtResource("1_fo6dc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="Control"]
+layout_mode = 2
+offset_top = 80.0
+offset_right = 1152.0
+offset_bottom = 229.0
+theme_override_fonts/font = ExtResource("1_5du3k")
+theme_override_font_sizes/font_size = 48
+text = "Totally Historically Accurate 
+D-Day Simulator"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 250.0
+offset_right = 753.0
+offset_bottom = 509.0
+
+[node name="StartButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_bx0aa")
+theme_override_font_sizes/font_size = 48
+text = "Start Game"
+flat = true
+
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="CreditsButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_bx0aa")
+theme_override_font_sizes/font_size = 48
+text = "Credits"
+flat = true
+
+[node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="TutorialButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_bx0aa")
+theme_override_font_sizes/font_size = 48
+text = "How to Play"
+flat = true
+
+[node name="Soldiers" type="Node2D" parent="."]
+
+[node name="AlliedSoldier" parent="Soldiers" instance=ExtResource("4_1n8dm")]
+z_index = 1
+position = Vector2(983, 511)
+scale = Vector2(4.00001, 4.00001)
+show_health = false
+
+[node name="AlliedSoldier2" parent="Soldiers" instance=ExtResource("4_1n8dm")]
+z_index = 1
+position = Vector2(1047, 343)
+scale = Vector2(4.00001, 4.00001)
+show_health = false
+
+[node name="AxisSoldier" parent="Soldiers" instance=ExtResource("5_p3nag")]
+position = Vector2(195, 225)
+scale = Vector2(4, 4)
+show_health = false
+
+[node name="AxisSoldier2" parent="Soldiers" instance=ExtResource("5_p3nag")]
+position = Vector2(160, 372)
+scale = Vector2(4, 4)
+show_health = false
+
+[node name="AxisSoldier3" parent="Soldiers" instance=ExtResource("5_p3nag")]
+position = Vector2(284, 525)
+scale = Vector2(4, 4)
+show_health = false
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 46.0
+offset_right = 351.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("1_5du3k")
+theme_override_font_sizes/font_size = 64
+text = "CREDITS"
+horizontal_alignment = 1
+
+[node name="CreditsText" type="RichTextLabel" parent="Credits"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 120.0
+offset_right = 1041.0
+offset_bottom = 526.0
+theme_override_fonts/normal_font = ExtResource("2_bx0aa")
+theme_override_font_sizes/normal_font_size = 24
+text = "PROGRAMMING: NullptrError
+
+THIRD PARTY ARTWORK USED:
+
+Title: Worldmap/Overworld tileset
+File: ocean.png 
+Author: Beast
+URL: https://opengameart.org/content/worldmapoverworld-tileset
+License: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+
+Title: WW2 Soldier
+File: soldier.png, axis_soldier.png
+Author: David Harrington
+URL: https://opengameart.org/content/ww2-soldier
+License: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+Notes: modified uniform to be dark gray for 'axis_soldier.png'
+
+File: shoot.wav
+Author: KuraiWolf
+URL: https://opengameart.org/content/light-machine-gun
+License: CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+Notes: Modifications made: Cut audio and converted to wav file format
+
+File: grunt.wav
+Author: n3b
+URL: https://opengameart.org/content/grunt
+License: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+Notes: Modifications made: Cut audio
+
+File: explosion.wav
+Author: Marcelo Fernandez (http://www.marcelofernandezmusic.com)
+URL: https://opengameart.org/content/single-and-multi-explosion
+License: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+Notes: Taken from \"Single and Multi Explosion\", Modifications made: Cut out 
+multi-explosion and sped up audio and converted to wav file format
+
+Made with <3 using Godot
+
+License: Apache 2.0"
+
+[node name="Return" type="Button" parent="Credits"]
+offset_left = 430.0
+offset_top = 568.0
+offset_right = 630.0
+offset_bottom = 611.0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_bx0aa")
+theme_override_font_sizes/font_size = 48
+text = "Return"
+flat = true
+
+[node name="HowToPlay" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="HowToPlay"]
+offset_left = 51.0
+offset_top = 46.0
+offset_right = 484.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("1_5du3k")
+theme_override_font_sizes/font_size = 64
+text = "How to Play"
+horizontal_alignment = 1
+
+[node name="Text" type="RichTextLabel" parent="HowToPlay"]
+offset_left = 87.0
+offset_top = 120.0
+offset_right = 1041.0
+offset_bottom = 526.0
+theme_override_fonts/normal_font = ExtResource("2_bx0aa")
+theme_override_font_sizes/normal_font_size = 24
+text = "It is June 6th, 1944 and the Allies are beginning their invasion of Normandy.
+
+The goal of the allies in this game is to either capture the flag of the Axis on the far left of the map (by placing a unit on the same tile as the flag) or kill all the Axis.
+
+The goal of the Axis is to kill all of the Allies and stop them from capturing the flag by building fortifications and placing landmines.
+
+The Allies go first and the player controlling them issues an action to all the units and then it becomes the Axis turn and the player controlling the Axis issues their orders and this continues until someone wins.
+
+Controls: W,A,S,D to pan the camera around or hold down middle mouse and move the mouse around. Scroll to zoom. The mouse is used for most actions on the board. Use right click to cancel an action from the action menu for a unit."
+
+[node name="Return" type="Button" parent="HowToPlay"]
+offset_left = 430.0
+offset_top = 568.0
+offset_right = 630.0
+offset_bottom = 611.0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_bx0aa")
+theme_override_font_sizes/font_size = 48
+text = "Return"
+flat = true
+
+[connection signal="pressed" from="Control/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="Credits/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="HowToPlay/Return" to="." method="_on_return_pressed"]

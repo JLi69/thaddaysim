@@ -39,5 +39,9 @@ and clicking on the tile you want the unit to move to/shoot at/build to/etc.
 You can pan the camera by using W,A,S,D or you can hold down middle mouse and
 move the mouse around. You can zoom in and out with the scroll wheel.
 
+If want to return to the 'action select' screen for a unit after you chose
+an action but before you issued the order, you can right click to cancel the
+action.
+
 Whenever an action is completed, the game will attempt to zoom onto the next
 unit but if you want to cancel this process, hit space bar.

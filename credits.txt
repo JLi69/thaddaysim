@@ -1,11 +1,13 @@
 THIRD PARTY ARTWORK USED:
 
 Title: Worldmap/Overworld tileset
+File: ocean.png 
 Author: Beast
 URL: https://opengameart.org/content/worldmapoverworld-tileset
 License: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
 
 Title: WW2 Soldier
+File: soldier.png, axis_soldier.png
 Author: David Harrington
 URL: https://opengameart.org/content/ww2-soldier
 License: CC-BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
