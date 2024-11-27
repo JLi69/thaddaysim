@@ -189,6 +189,7 @@ Made with <3 using Godot
 License: Apache 2.0"
 
 [node name="Return" type="Button" parent="Credits"]
+layout_mode = 0
 offset_left = 430.0
 offset_top = 568.0
 offset_right = 630.0
@@ -213,6 +214,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 
 [node name="Label" type="Label" parent="HowToPlay"]
+layout_mode = 0
 offset_left = 51.0
 offset_top = 46.0
 offset_right = 484.0
@@ -223,6 +225,7 @@ text = "How to Play"
 horizontal_alignment = 1
 
 [node name="Text" type="RichTextLabel" parent="HowToPlay"]
+layout_mode = 0
 offset_left = 87.0
 offset_top = 120.0
 offset_right = 1041.0
@@ -240,6 +243,7 @@ The Allies go first and the player controlling them issues an action to all the 
 Controls: W,A,S,D to pan the camera around or hold down middle mouse and move the mouse around. Scroll to zoom. The mouse is used for most actions on the board. Use right click to cancel an action from the action menu for a unit."
 
 [node name="Return" type="Button" parent="HowToPlay"]
+layout_mode = 0
 offset_left = 430.0
 offset_top = 568.0
 offset_right = 630.0
