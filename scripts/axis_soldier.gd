@@ -17,8 +17,8 @@ var size: Vector2i = Vector2i.ZERO
 
 var action: String = ""
 
-@export var hp: int = 16
-@export var max_hp: int = 16
+@export var hp: int = 10
+@export var max_hp: int = 10
 
 func damage(amt: int = 1):
 	var particles = effect_particles.instantiate()
