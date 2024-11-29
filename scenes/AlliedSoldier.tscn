@@ -124,18 +124,19 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="AlliedSoldier" type="AnimatedSprite2D"]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_8cjft")
+animation = &"walking"
 autoplay = "default"
 flip_h = true
 script = ExtResource("2_at5eq")
 effect_particles = ExtResource("3_2lpbx")
 explosion = ExtResource("4_er5ia")
-walking_speed = 32.0
+walking_speed = 48.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -1

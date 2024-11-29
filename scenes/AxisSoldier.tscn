@@ -124,7 +124,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="AxisSoldier" type="AnimatedSprite2D"]
@@ -133,7 +133,7 @@ scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_e1l1g")
 autoplay = "default"
 script = ExtResource("2_057vq")
-walking_speed = 32.0
+walking_speed = 48.0
 effect_particles = ExtResource("3_onph2")
 explosion = ExtResource("4_sumry")
 

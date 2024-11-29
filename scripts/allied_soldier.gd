@@ -217,13 +217,12 @@ func get_possible_moves() -> Array[Vector2i]:
 func get_possible_heal() -> Array[Vector2i]:
 	var possible: Array[Vector2i] = []
 	var p = get_tile_pos()
-	for x in range(-2, 2 + 1):
-		if x == 0:
-			continue
-		if can_move_xy(p.x, p.y, x, 0):
-			possible.push_back(p + Vector2i(x, 0))
-		if can_move_xy(p.x, p.y, 0, x):
-			possible.push_back(p + Vector2i(0, x))
+	for x in range(-3, 3 + 1):
+		for y in range(-3, 3 + 1):
+			if x == 0 and y == 0:
+				continue
+			if can_move_xy(p.x, p.y, x, y):
+				possible.push_back(p + Vector2i(x, y))
 	
 	return possible
 
@@ -251,12 +250,24 @@ func can_grenade(pos: Vector2i, diff: Vector2i, dist: int) -> bool:
 func get_possible_grenade() -> Array[Vector2i]:
 	var possible: Array[Vector2i] = []
 	var p = get_tile_pos()
-	var dist = 4
-	var diff = [Vector2i(1, 1), Vector2i(-1, 1), Vector2i(1, -1), Vector2i(-1, -1)]
-	for d in diff:
-		if not can_grenade(p, d, dist):
+	var diagonal = [Vector2i(1, 1), Vector2i(-1, 1), Vector2i(1, -1), Vector2i(-1, -1)]
+	var straight = [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
+	for d in diagonal:
+		if not can_grenade(p, d, 4):
 			continue
-		possible.push_back(p + d * dist)
+		possible.push_back(p + d * 4)
+	for d in diagonal:
+		if not can_grenade(p, d, 3):
+			continue
+		possible.push_back(p + d * 3)
+	for d in straight:
+		if not can_grenade(p, d, 7):
+			continue
+		possible.push_back(p + d * 7)
+	for d in straight:
+		if not can_grenade(p, d, 8):
+			continue
+		possible.push_back(p + d * 8)
 	return possible
 
 func _ready() -> void:
