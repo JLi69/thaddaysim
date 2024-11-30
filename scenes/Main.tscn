@@ -63,22 +63,22 @@ position = Vector2(145, 159)
 [node name="AxisSoldiers" type="Node2D" parent="."]
 
 [node name="AxisSoldier" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
-position = Vector2(-184, 119)
+position = Vector2(-119, 170)
 
 [node name="AxisSoldier2" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
-position = Vector2(-182, 31)
+position = Vector2(-119, -0.999996)
 
 [node name="AxisSoldier3" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
-position = Vector2(-696, 191)
+position = Vector2(-456, 191)
 
 [node name="AxisSoldier4" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
-position = Vector2(-694, 103)
+position = Vector2(-454, 103)
 
 [node name="AxisSoldier5" parent="AxisSoldiers" instance=ExtResource("7_jrkdo")]
-position = Vector2(-696, 23)
+position = Vector2(-456, 23)
 
 [node name="Flag" parent="." instance=ExtResource("19_etkmp")]
-position = Vector2(-1328, 66)
+position = Vector2(-1136, 66)
 
 [node name="Sfx" type="Node" parent="."]
 
@@ -134,6 +134,7 @@ text = "Hello World"
 horizontal_alignment = 1
 
 [node name="MainMenu" parent="." instance=ExtResource("20_via0g")]
+visible = false
 
 [node name="PauseScreen" parent="." instance=ExtResource("21_fkse1")]
 visible = false

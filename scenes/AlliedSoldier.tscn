@@ -130,7 +130,6 @@ animations = [{
 [node name="AlliedSoldier" type="AnimatedSprite2D"]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_8cjft")
-animation = &"walking"
 autoplay = "default"
 flip_h = true
 script = ExtResource("2_at5eq")

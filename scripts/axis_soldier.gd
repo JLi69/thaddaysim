@@ -71,8 +71,8 @@ func get_possible_moves() -> Array[Vector2i]:
 	var p = get_tile_pos()
 	var tilemap: TileMapLayer = $/root/Main/Map/Tiles
 	
-	for x in range(-6, 6 + 1):
-		for y in range(-6, 6 + 1):
+	for x in range(-7, 7 + 1):
+		for y in range(-7, 7 + 1):
 			if x == 0 and y == 0:
 				continue
 			var pos = p + Vector2i(x, y)
@@ -133,8 +133,8 @@ func get_possible_build() -> Array[Vector2i]:
 	var p = get_tile_pos()
 	var tilemap: TileMapLayer = $/root/Main/Map/Tiles
 	
-	for x in range(-3, 3 + 1):
-		for y in range(-3, 3 + 1):
+	for x in range(-4, 4 + 1):
+		for y in range(-4, 4 + 1):
 			var pos = p + Vector2i(x, y)
 			if x == 0 and y == 0:
 				continue
@@ -188,6 +188,12 @@ func get_possible_shoot():
 			possible.push_back(p + Vector2i(x, 0))
 		if can_move(p.x, p.y, 0, x) or can_move(p.x, p.y, 0, x - sign(x)):
 			possible.push_back(p + Vector2i(0, x))
+	
+	var diagonal = [Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, 1), Vector2i(-1, -1)]
+	for x in range(1, 4 + 1):
+		for diff in diagonal:
+			if can_move(p.x, p.y, diff.x * x, diff.y * x) or can_move(p.x, p.y, diff.x * (x - 1), diff.y * (x - 1)):
+				possible.append(p + diff * x)
 	
 	return possible
 

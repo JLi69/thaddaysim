@@ -197,8 +197,8 @@ func get_possible_moves() -> Array[Vector2i]:
 	var p = get_tile_pos()
 	var tilemap: TileMapLayer = $/root/Main/Map/Tiles
 	
-	for x in range(-4, 4 + 1):
-		for y in range(-4, 4 + 1):
+	for x in range(-5, 5 + 1):
+		for y in range(-5, 5 + 1):
 			if x == 0 and y == 0:
 				continue
 			var pos = p + Vector2i(x, y)
@@ -237,6 +237,12 @@ func get_possible_shoot() -> Array[Vector2i]:
 		if can_move_xy(p.x, p.y, 0, x) or can_move_xy(p.x, p.y, 0, x - sign(x)):
 			possible.push_back(p + Vector2i(0, x))
 	
+	var diagonal = [Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, 1), Vector2i(-1, -1)]
+	for x in range(1, 3 + 1):
+		for diff in diagonal:
+			if can_grenade(p, diff, x) or can_grenade(p, diff, x - 1):
+				possible.append(p + diff * x)
+	
 	return possible
 
 func can_grenade(pos: Vector2i, diff: Vector2i, dist: int) -> bool:
@@ -253,21 +259,23 @@ func get_possible_grenade() -> Array[Vector2i]:
 	var diagonal = [Vector2i(1, 1), Vector2i(-1, 1), Vector2i(1, -1), Vector2i(-1, -1)]
 	var straight = [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
 	for d in diagonal:
-		if not can_grenade(p, d, 4):
-			continue
-		possible.push_back(p + d * 4)
-	for d in diagonal:
-		if not can_grenade(p, d, 3):
-			continue
-		possible.push_back(p + d * 3)
+		var dist = 6
+		while dist > 0:
+			if not can_grenade(p, d, dist):
+				dist -= 1
+			else:
+				break
+		if dist > 0:
+			possible.push_back(p + d * dist)
 	for d in straight:
-		if not can_grenade(p, d, 7):
-			continue
-		possible.push_back(p + d * 7)
-	for d in straight:
-		if not can_grenade(p, d, 8):
-			continue
-		possible.push_back(p + d * 8)
+		var dist = 6
+		while dist > 0:
+			if not can_grenade(p, d, dist):
+				dist -= 1
+			else:
+				break
+		if dist > 0:
+			possible.push_back(p + d * dist)
 	return possible
 
 func _ready() -> void:
@@ -359,7 +367,7 @@ func _process(delta: float) -> void:
 			vel.y = 1.0
 		elif position.y > target.y:
 			vel.y = -1.0
-	elif can_move_yx(startx, starty, diff.x, diff.y) and count_landmines_xy(startx, starty, diff.x, diff.y) >= count_landmines_yx(startx, starty, diff.x, diff.y) and diff.length() != 0:
+	elif can_move_yx(startx, starty, diff.x, diff.y) and diff.length() != 0:
 		animation = "walking"
 		if position.y < target.y:
 			vel.y = 1.0

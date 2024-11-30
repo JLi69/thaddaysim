@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 func _ready() -> void:
+	show()
 	get_tree().paused = true
 
 func _on_credits_button_pressed() -> void:
