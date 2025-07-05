@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://yxiohtrg0qwm"]
 
 [ext_resource type="Texture2D" uid="uid://fi50h7onstbu" path="res://art/particle.png" id="1_bcefi"]
-[ext_resource type="Script" path="res://scripts/effect_particles.gd" id="2_wgoiu"]
+[ext_resource type="Script" uid="uid://e7dp2l3v2xjx" path="res://scripts/effect_particles.gd" id="2_wgoiu"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fwgtr"]
 lifetime_randomness = 0.5

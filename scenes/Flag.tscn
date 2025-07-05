@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cgtd2n157ab08"]
 
 [ext_resource type="Texture2D" uid="uid://d3tcff8a3jyn7" path="res://art/flag.png" id="1_mau7b"]
-[ext_resource type="Script" path="res://scripts/flag.gd" id="2_by3sh"]
+[ext_resource type="Script" uid="uid://dvpo335bpvv4g" path="res://scripts/flag.gd" id="2_by3sh"]
 [ext_resource type="Texture2D" uid="uid://dtl8xc6daks87" path="res://art/shadow.png" id="2_lvdbo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5356t"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bawr4pjkldab3"]
 
 [ext_resource type="Texture2D" uid="uid://dlod7t6vit8ie" path="res://art/white_outline.png" id="1_mrcn8"]
-[ext_resource type="Script" path="res://scripts/landmine_outline.gd" id="2_8vfy1"]
+[ext_resource type="Script" uid="uid://c68sbankpp8wn" path="res://scripts/landmine_outline.gd" id="2_8vfy1"]
 
 [node name="LandmineOutline" type="Sprite2D"]
 modulate = Color(1, 0, 0, 1)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://do3emwt7oi63q"]
 
 [ext_resource type="FontFile" uid="uid://b3j21gnxq1jn1" path="res://fonts/8BitOperator/8bitOperatorPlus8-Bold.ttf" id="1_5du3k"]
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_f02ng"]
+[ext_resource type="Script" uid="uid://d13uvikitqq3s" path="res://scripts/main_menu.gd" id="1_f02ng"]
 [ext_resource type="TileSet" uid="uid://bu2gjd854ctix" path="res://tiles/tileset.tres" id="1_fo6dc"]
 [ext_resource type="FontFile" uid="uid://b83lr4reqbm0y" path="res://fonts/8BitOperator/8bitOperatorPlus8-Regular.ttf" id="2_bx0aa"]
 [ext_resource type="PackedScene" uid="uid://o3ai05q6n00j" path="res://scenes/AlliedSoldier.tscn" id="4_1n8dm"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqhv7u2vso48p"]
 
 [ext_resource type="Texture2D" uid="uid://dlod7t6vit8ie" path="res://art/white_outline.png" id="1_1x05c"]
-[ext_resource type="Script" path="res://scripts/build_outline.gd" id="2_guni5"]
+[ext_resource type="Script" uid="uid://84krpgnjc6qb" path="res://scripts/build_outline.gd" id="2_guni5"]
 
 [node name="BuildOutline" type="Sprite2D"]
 modulate = Color(0.473513, 0.162596, 0.0358237, 1)
